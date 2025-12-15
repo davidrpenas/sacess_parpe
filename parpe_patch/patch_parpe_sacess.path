@@ -1,0 +1,321 @@
+diff -ruN git/parPE/src/parpeamici/multiConditionProblem.cpp parPE/src/parpeamici/multiConditionProblem.cpp
+--- git/parPE/src/parpeamici/multiConditionProblem.cpp	2025-04-30 16:48:28.000000000 +0200
++++ parPE/src/parpeamici/multiConditionProblem.cpp	2025-04-24 13:05:37.000000000 +0200
+@@ -369,6 +369,7 @@
+     for(int trial = 1; trial <= maxNumTrials; ++trial) {
+         /* It is currently not safe to reuse solver if an exception has
+          * occurred,so clone every time */
++
+         auto solver = std::unique_ptr<amici::Solver>(solverTemplate.clone());
+         if (!sendStates) {
+             /* If we don't need the states, we can save memory here.
+diff -ruN git/parPE/src/parpeamici/optimizationApplication.cpp parPE/src/parpeamici/optimizationApplication.cpp
+--- git/parPE/src/parpeamici/optimizationApplication.cpp	2025-04-30 16:48:28.000000000 +0200
++++ parPE/src/parpeamici/optimizationApplication.cpp	2025-04-07 14:42:40.000000000 +0200
+@@ -6,6 +6,7 @@
+ #include <parpeoptimization/optimizationOptions.h>
+ #include <parpecommon/parpeVersion.h>
+ #include <parpeamici/amiciMisc.h>
++#include <parpecommon/logging.h>
+ 
+ #ifdef PARPE_ENABLE_MPI
+ #include <mpi.h>
+@@ -177,22 +178,14 @@
+ #endif
+ }
+ 
+-int OptimizationApplication::run(int argc, char **argv) {
++std::tuple<int, double, std::vector<double>>  OptimizationApplication::run(int argc, char **argv) {
++
+     // start Timers
+     WallTimer wallTimer;
+     CpuTimer cpuTimer;
+ 
+     int status = init(argc, argv);
+-    if(status)
+-        return status;
+-
+-    if (dataFileName.empty()) {
+-        logmessage(loglevel::critical,
+-                   "No input file provided. Must provide input file as first "
+-                   "and only argument or set "
+-                   "OptimizationApplication::inputFileName manually.");
+-        return 1;
+-    }
++    std::tuple<int, double, std::vector<double> > res;
+ 
+     initProblem(dataFileName, resultFileName);
+ 
+@@ -213,13 +206,13 @@
+         }
+     } else {
+ #endif
+-        runSingleProcess();
++        res = runSingleProcess();
+ 
+         finalizeTiming(wallTimer.getTotal(), cpuTimer.getTotal());
+ #ifdef PARPE_ENABLE_MPI
+     }
+ #endif
+-    return status;
++    return res;
+ }
+ 
+ void OptimizationApplication::runMaster() {
+@@ -256,7 +249,10 @@
+ }
+ #endif
+ 
+-void OptimizationApplication::runSingleProcess() {
++std::tuple<int, double, std::vector<double>>  OptimizationApplication::runSingleProcess() {
++    std::tuple<int, double, std::vector<double> > result;
++
++
+     // run serially
+     switch (operationType) {
+     case OperationType::gradientCheck: {
+@@ -267,12 +263,14 @@
+     }
+     case OperationType::parameterEstimation:
+     default:
+-        if (problem->getOptimizationOptions().numStarts > 0) {
++        if (problem->getOptimizationOptions().numStarts > 1) {
+             runMultiStarts();
+         } else {
+-            getLocalOptimum(problem.get());
++            result = getLocalOptimum(problem.get());
+         }
+     }
++	
++	return result;
+ }
+ 
+ void OptimizationApplication::finalizeTiming(double wallTimeSeconds, double cpuTimeSeconds) {
+@@ -294,9 +292,9 @@
+         saveTotalCpuTime(h5File, totalCpuTimeInSeconds);
+     }
+ #else
+-    logmessage(LOGLVL_INFO, "Total walltime: %fs, CPU time: %fs",
++    logmessage(loglevel::info, "Total walltime: %fs, CPU time: %fs",
+                wallTimeSeconds, cpuTimeSeconds);
+-    saveTotalCpuTime(file_id, cpuTimeSeconds);
++    saveTotalCpuTime(h5File, cpuTimeSeconds);
+ #endif
+ }
+ 
+diff -ruN git/parPE/src/parpeoptimization/multiStartOptimization.cpp parPE/src/parpeoptimization/multiStartOptimization.cpp
+--- git/parPE/src/parpeoptimization/multiStartOptimization.cpp	2025-04-30 16:48:28.000000000 +0200
++++ parPE/src/parpeoptimization/multiStartOptimization.cpp	2025-04-07 15:18:56.000000000 +0200
+@@ -24,14 +24,14 @@
+ 
+ }
+ 
+-void MultiStartOptimization::run() {
+-    if (runParallel)
+-        runMultiThreaded();
+-    else
+-        runSingleThreaded();
++std::tuple<int, double, std::vector<double>> MultiStartOptimization::run() {
++    //if (runParallel)
++    //    runMultiThreaded();
++    //else
++        return runSingleThreaded();
+ }
+ 
+-void MultiStartOptimization::runMultiThreaded() const
++/*void MultiStartOptimization::runMultiThreaded() const
+ {
+     // Determine thread pool size
+     // (note that hardware_concurrency() may return 0)
+@@ -116,37 +116,17 @@
+ 
+     logmessage(loglevel::debug, "Multi-start optimization finished.");
+ }
++*/
+ 
+-void MultiStartOptimization::runSingleThreaded()
++std::tuple<int, double, std::vector<double>> MultiStartOptimization::runSingleThreaded()
+ {
+     logmessage(loglevel::debug,
+                "Starting runParallelMultiStartOptimization with %d starts sequentially",
+                numberOfStarts);
+ 
+-    int ms = 0;
+-    int numSucceeded = 0;
++    return runStart(1);
+ 
+-    while(true) {
+-        if(restartOnFailure && numSucceeded == numberOfStarts)
+-            break;
+-
+-        if(ms == numberOfStarts)
+-            break;
+-
+-        auto result = runStart(ms);
+-
+-        if(result) {
+-            logmessage(loglevel::debug,
+-                       "Start #%d finished successfully", ms);
+-            ++numSucceeded;
+-        } else {
+-            logmessage(loglevel::debug, "Start ms #%d finished "
+-                                        "unsuccessfully.",ms);
+-        }
+-        ++ms;
+-    }
+-
+-    logmessage(loglevel::debug, "runParallelMultiStartOptimization finished");
++	
+ }
+ 
+ void MultiStartOptimization::setRunParallel(bool runParallel)
+@@ -154,12 +134,13 @@
+     this->runParallel = runParallel;
+ }
+ 
+-int MultiStartOptimization::runStart(int start_idx) const
++std::tuple<int, double, std::vector<double>> MultiStartOptimization::runStart(int start_idx) const
+ {
+     logmessage(loglevel::debug,
+                "Starting local optimization #%d", start_idx);
+ 
+     auto problem = msProblem.getLocalProblem(first_start_idx + start_idx);
++	
+     return getLocalOptimum(problem.get());
+ }
+ 
+diff -ruN git/parPE/src/parpeoptimization/optimizationProblem.cpp parPE/src/parpeoptimization/optimizationProblem.cpp
+--- git/parPE/src/parpeoptimization/optimizationProblem.cpp	2025-04-30 16:48:28.000000000 +0200
++++ parPE/src/parpeoptimization/optimizationProblem.cpp	2025-04-07 15:09:15.000000000 +0200
+@@ -21,7 +21,7 @@
+ namespace parpe {
+ 
+ 
+-int getLocalOptimum(OptimizationProblem *problem) {
++std::tuple<int, double, std::vector<double>> getLocalOptimum(OptimizationProblem *problem) {
+     // TODO how to make this nicer? minibatchOptimizer should not inherit
+     // from Optimizer since they have different interfaces, so we can not
+     // use the same factory method
+@@ -34,7 +34,7 @@
+                                  "optimization problem cannot be solved by "
+                                  "minibatch optimizer");
+         auto status = runMinibatchOptimization(minibatchProblem);
+-        return std::get < 0 > (status);
++        return status;
+     }
+ 
+     auto optimizer = std::unique_ptr < Optimizer > (
+@@ -43,10 +43,12 @@
+         throw ParPEException("Invalid optimizer selected. Did you compile "
+                              "parPE with support for the selected optimizer?");
+     auto status = optimizer->optimize(problem);
+-    return std::get < 0 > (status);
++
++    return status;
+ }
+ 
+ 
++
+ void optimizationProblemGradientCheckMultiEps(OptimizationProblem *problem,
+                                       int numParameterIndicesToCheck
+                                       ) {
+diff -ruN git/parPE/include/parpeamici/multiConditionProblem.h parPE/include/parpeamici/multiConditionProblem.h
+--- git/parPE/include/parpeamici/multiConditionProblem.h	2025-04-30 16:48:28.000000000 +0200
++++ parPE/include/parpeamici/multiConditionProblem.h	2025-04-07 14:07:13.000000000 +0200
+@@ -21,7 +21,11 @@
+ 
+ namespace parpe {
+ 
++#ifdef PARPE_ENABLE_MPI
+ class LoadBalancerMaster;
++#else
++using LoadBalancerMaster = int;
++#endif
+ class OptimizationResultWriter;
+ class MultiConditionDataProviderHDF5;
+ class MultiConditionDataProvider;
+diff -ruN git/parPE/include/parpeamici/optimizationApplication.h parPE/include/parpeamici/optimizationApplication.h
+--- git/parPE/include/parpeamici/optimizationApplication.h	2025-04-30 16:48:28.000000000 +0200
++++ parPE/include/parpeamici/optimizationApplication.h	2025-04-21 13:03:16.000000000 +0200
+@@ -50,7 +50,7 @@
+      * Must be called before any other functions.
+      * @return status code; 0 on success
+      */
+-    int run(int argc, char **argv);
++    std::tuple<int, double, std::vector<double>> run(int argc, char **argv);
+ 
+     /**
+      * @brief This is run by the MPI rank 0 process when started with multiple
+@@ -69,7 +69,7 @@
+     /**
+      * @brief Code to be run if the application is running on only 1 process
+      */
+-    virtual void runSingleProcess();
++    std::tuple<int, double, std::vector<double>> runSingleProcess();
+ 
+   protected:
+ 
+diff -ruN git/parPE/include/parpeoptimization/multiStartOptimization.h parPE/include/parpeoptimization/multiStartOptimization.h
+--- git/parPE/include/parpeoptimization/multiStartOptimization.h	2025-04-30 16:48:28.000000000 +0200
++++ parPE/include/parpeoptimization/multiStartOptimization.h	2025-04-07 15:21:33.000000000 +0200
+@@ -16,8 +16,7 @@
+ 
+     virtual bool restartOnFailure() const { return false; }
+ 
+-    virtual std::unique_ptr<OptimizationProblem>
+-    getLocalProblem(int multiStartIndex) const = 0;
++    virtual std::unique_ptr<OptimizationProblem> getLocalProblem(int multiStartIndex) const = 0;
+ 
+     virtual ~MultiStartOptimizationProblem() = default;
+ };
+@@ -39,17 +38,17 @@
+     /**
+      * @brief Start multi-start optimization
+      */
+-    void run();
++    std::tuple<int, double, std::vector<double>>  run();
+ 
+     /**
+      * @brief Run all optimizations in parallel, each in a dedicated thread
+      */
+-    void runMultiThreaded() const;
++//    void runMultiThreaded() const;
+ 
+     /**
+      * @brief Run optimizations sequentially
+      */
+-    void runSingleThreaded();
++    std::tuple<int, double, std::vector<double>> runSingleThreaded();
+ 
+     /**
+      * @brief Set parallel or sequential mode
+@@ -60,7 +59,7 @@
+     /**
+      * @brief Optimize local problem for the given start index
+      */
+-    int runStart(int start_idx) const;
++    std::tuple<int, double, std::vector<double>>  runStart(int start_idx) const;
+ 
+ 
+     /** Optimization problem to be solved */
+@@ -73,7 +72,7 @@
+     bool restartOnFailure = false;
+ 
+     /** Run multiple optimizations in parallel */
+-    bool runParallel = true;
++    bool runParallel = false;
+ 
+     /** Index value of the first start
+      * Usable when splitting starts across multiple files */
+diff -ruN git/parPE/include/parpeoptimization/optimizationProblem.h parPE/include/parpeoptimization/optimizationProblem.h
+--- git/parPE/include/parpeoptimization/optimizationProblem.h	2025-04-30 16:48:28.000000000 +0200
++++ parPE/include/parpeoptimization/optimizationProblem.h	2025-04-07 15:10:16.000000000 +0200
+@@ -214,7 +214,7 @@
+  * @return int indicating status. 0: success, != 0: failure
+  */
+ 
+-int getLocalOptimum(OptimizationProblem *problem);
++std::tuple<int, double, std::vector<double>>  getLocalOptimum(OptimizationProblem *problem);
+ 
+ 
+ void optimizationProblemGradientCheckMultiEps(OptimizationProblem *problem,
