@@ -1,6 +1,6 @@
 # Containers on HPC Infrastructures
 
-This repository provides containerized workflows for running **SaCeSS + parPE**
+This repository provides containerized workflows for running **SaCeSS+parPE**
 benchmarks on HPC systems using **Singularity/Apptainer** and **SLURM**.
 
 ## System Specifications
