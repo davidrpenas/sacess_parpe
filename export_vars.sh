@@ -1,0 +1,9 @@
+export PARPE_NO_DEBUG=1
+export PARPE_NUM_SIMULATION_TRIALS=1
+export OMP_NUM_THREADS=1
+export OMPI_CC=gcc
+export OMPI_CXX=g++
+export OMPI_FC=gfortran
+export CC=mpicc
+export CXX=mpic++
+export FC=mpifort
