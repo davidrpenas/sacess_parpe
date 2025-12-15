@@ -79,7 +79,7 @@ singularity exec \
   "/opt/sacess_petab/bin/paralleltestbed_${BENCH}" \
   "${INPUT_XML}" \
   "/opt/sacess_petab/output/${RUN_NAME}"
-
+```
 
 ## Submitting Jobs to SLURM
 
@@ -99,15 +99,18 @@ sbatch job_example.sh "$CONTAINERS" "$BENCH" "$INPUT" "$OUT" Boehm_adjoint_saces
 sbatch job_example.sh "$CONTAINERS" "$BENCH" "$INPUT" "$OUT" Boehm_adjoint_sacess_ipopt_08
 sbatch job_example.sh "$CONTAINERS" "$BENCH" "$INPUT" "$OUT" Boehm_adjoint_sacess_ipopt_09
 sbatch job_example.sh "$CONTAINERS" "$BENCH" "$INPUT" "$OUT" Boehm_adjoint_sacess_ipopt_10
+```
 
 ## Setup
 
-```bash
 # Required directory structure
+
+```bash
 containers/
 inputs/
 results/
 setup_ft3_scripts/
+```
 
 # Place the Singularity image here
 containers/sacess_parpe.sif
