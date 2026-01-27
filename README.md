@@ -3,7 +3,7 @@
 ## A modified version of SaCeSS to work with problems in PEtab format
 
 This repository provides an initial integration between the **SaCeSS** solver and
-optimization problems defined in the **PEtab** format.  
+optimization problems defined in the **PEtab** format, using parPE tool.  
 The following notes describe how to compile and use the software.
 
 ## Installation
