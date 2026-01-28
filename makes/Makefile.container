@@ -1,0 +1,1086 @@
+BUILDDIR=.
+LIBRARY=$(BUILDDIR)/lib
+
+# CONFIGURE THIS PATHS
+PATHPARPE=/parPE
+#PATHHDF5=/opt/cesga/2020/software/Compiler/gcccore/system/hdf5/1.12.1
+PATHBOOST=/usr/lib/x86_64-linux-gnu/
+#PATHIPOPT=/mnt/lustre/scratch/nlsas/home/csic/gim/dro/parPE/ThirdParty/Ipopt-releases-3.13.3/install
+
+#############################################################################
+## PARALLEL GCC/GFORTRAN - OPENMP
+#############################################################################
+CC:=mpicc
+FC:=mpif90
+CPP:=mpic++
+
+CLIBS+=  -lsz -std=gnu11 -lstdc++ -lpthread -lrt -lgfortran  -cpp -MMD -lm -ldl -lz
+CFLAGS+= -O3  -cpp -DGNU -lhdf5_cpp -lhdf5_hl_cpp -lhdf5_hl -lhdf5 -lcblas -lstdc++fs
+CXXFLAGS=-std=c++17
+
+CPARALLEL+=-DOPENMP -DMPI2 -fopenmp -lmpi -lmpi_cxx 
+FLIBS+=
+FFLAGS+= -O3 -cpp -DGNU -std=legacy
+FPARALLEL+= -DOPENMP -DMPI2 -DGNU -fopenmp
+
+#LIBS+= -L$(LIBRARY)/BLAS -lblas
+#INC+=  -I$(LIBRARY)/misqp/gnu
+#LIBS+= -L$(LIBRARY)/misqp/gnu
+#MISQP=   $(LIBRARY)/misqp/gnu/libmisqp.so
+
+
+
+
+#############################################################################
+# specific benchmarks
+#############################################################################
+# ADD BENCHMARKS FILES SECTION
+#############################################################################
+
+INCPARPE_LOCAL=-I$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Boehm_JProteomeRes2014/model/ -DBoehm
+LIBPARPE_LOCAL=$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Boehm_JProteomeRes2014/build/model/libBoehm_JProteomeRes2014.a
+TERM_PE=_Boehm
+DIR_Boehm_build := $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Boehm_JProteomeRes2014/build
+
+ifeq ($(PARPE),Borghans)
+INCPARPE_LOCAL=-I$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Borghans_BiophysChem1997/model -DBorghans
+LIBPARPE_LOCAL=$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Borghans_BiophysChem1997/build/model/libBorghans_BiophysChem1997.a -DBorghans
+TERM_PE=_Borghans
+endif
+DIR_Borghans_build := $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Borghans_BiophysChem1997/build
+
+ifeq ($(PARPE),Crauste)
+INCPARPE_LOCAL=-I$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Crauste_CellSystems2017/model -DCrauste
+LIBPARPE_LOCAL=$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Crauste_CellSystems2017/build/model/libCrauste_CellSystems2017.a -DCrauste
+TERM_PE=_Crauste
+endif
+DIR_Crauste_build := $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Crauste_CellSystems2017/build
+
+ifeq ($(PARPE),Elowitz)
+INCPARPE_LOCAL=-I$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Elowitz_Nature2000/model -DElowitz
+LIBPARPE_LOCAL=$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Elowitz_Nature2000/build/model/libElowitz_Nature2000.a   -DElowitz
+TERM_PE=_Elowitz
+endif
+DIR_Elowitz_build := $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Elowitz_Nature2000/build
+
+ifeq ($(PARPE),Fujita)
+INCPARPE_LOCAL=-I$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Fujita_SciSignal2010/model -DFujita
+LIBPARPE_LOCAL=$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Fujita_SciSignal2010/build/model/libFujita_SciSignal2010.a -DFujita
+TERM_PE=_Fujita
+endif
+DIR_Fujita_build := $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Fujita_SciSignal2010/build
+
+ifeq ($(PARPE),Sneyd)
+INCPARPE_LOCAL=-I$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Sneyd_PNAS2002/model -DSneyd
+LIBPARPE_LOCAL=$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Sneyd_PNAS2002/build/model/libSneyd_PNAS2002.a -DSneyd
+TERM_PE=_Sneyd
+endif
+DIR_Sneyd_build := $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Sneyd_PNAS2002/build
+
+ifeq ($(PARPE),Weber)
+INCPARPE_LOCAL=-I$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Weber_BMC2015/model -DWeber
+LIBPARPE_LOCAL=$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Weber_BMC2015/build/model/libWeber_BMC2015.a -DWeber
+TERM_PE=_Weber
+endif
+DIR_Weber_build := $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Weber_BMC2015/build
+
+ifeq ($(PARPE),Zheng)
+INCPARPE_LOCAL=-I$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Zheng_PNAS2012/model -DZheng
+LIBPARPE_LOCAL=$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Zheng_PNAS2012/build/model/libZheng_PNAS2012.a -DZheng
+TERM_PE=_Zheng
+endif
+DIR_Zheng_build := $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Zheng_PNAS2012/build
+
+#ifeq ($(PARPE),Alkan)
+#INCPARPE_LOCAL=-I$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Alkan_SciSignal2018/model -DAlkan
+#LIBPARPE_LOCAL=$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Alkan_SciSignal2018/build/model/libAlkan_SciSignal2018.a -DAlkan
+#TERM_PE=_Alkan
+#endif
+#DIR_Alkan_build := $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Alkan_SciSignal2018/build
+
+#ifeq ($(PARPE),Bachmann)
+#INCPARPE_LOCAL=-I$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Bachmann_MSB2011/model -DBachmann
+#LIBPARPE_LOCAL=$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Bachmann_MSB2011/build/model/libBachmann_MSB2011.a -DBachmann
+#TERM_PE=_Bachmann
+#endif
+#DIR_Bachmann_build := $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Bachmann_MSB2011/build
+
+ifeq ($(PARPE),Blasi)
+INCPARPE_LOCAL=-I$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Blasi_CellSystems2016/model -DBlasi
+LIBPARPE_LOCAL=$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Blasi_CellSystems2016/build/model/libBlasi_CellSystems2016.a -DBlasi
+TERM_PE=_Blasi
+endif
+DIR_Blasi_build := $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Blasi_CellSystems2016/build
+
+ifeq ($(PARPE),Bruno)
+INCPARPE_LOCAL=-I$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Bruno_JExpBot2016/model -DBruno
+LIBPARPE_LOCAL=$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Bruno_JExpBot2016/build/model/libBruno_JExpBot2016.a -DBruno
+TERM_PE=_Bruno
+endif
+DIR_Bruno_build := $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Bruno_JExpBot2016/build
+
+ifeq ($(PARPE),Chen)
+INCPARPE_LOCAL=-I$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Chen_MSB2009/model -DChen
+LIBPARPE_LOCAL=$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Chen_MSB2009/build/model/libChen_MSB2009.a -DChen
+TERM_PE=_Chen
+endif
+DIR_Chen_build :=  $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Chen_MSB2009/build
+
+ifeq ($(PARPE),Giordano)
+INCPARPE_LOCAL=-I$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Giordano_Nature2020/model -DGiordano
+LIBPARPE_LOCAL=$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Giordano_Nature2020/build/model/libGiordano_Nature2020.a -DGiordano
+TERM_PE=_Giordano
+endif
+DIR_Giordano_build :=  $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Giordano_Nature2020/build
+
+ifeq ($(PARPE),Beer)
+INCPARPE_LOCAL=-I$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Beer_MolBioSystems2014/model -DBeer
+LIBPARPE_LOCAL=$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Beer_MolBioSystems2014/build/model/libBeer_MolBioSystems2014.a -DBeer
+TERM_PE=_Beer
+endif
+DIR_Beer_build := $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Beer_MolBioSystems2014/build
+
+ifeq ($(PARPE),Bertozzi)
+INCPARPE_LOCAL=-I$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Bertozzi_PNAS2020/model -DBertozzi
+LIBPARPE_LOCAL=$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Bertozzi_PNAS2020/build/model/libBertozzi_PNAS2020.a -DBertozzi
+TERM_PE=_Bertozzi
+endif
+DIR_Bertozzi_build := $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Bertozzi_PNAS2020/build
+
+ifeq ($(PARPE),Laske)
+INCPARPE_LOCAL=-I$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Laske_PLOSComputBiol2019/model -DLaske
+LIBPARPE_LOCAL=$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Laske_PLOSComputBiol2019/build/model/libLaske_PLOSComputBiol2019.a -DLaske
+TERM_PE=_Laske
+endif
+DIR_Laske_build := $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Laske_PLOSComputBiol2019/build
+
+
+ifeq ($(PARPE),Perelson)
+INCPARPE_LOCAL=-I$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Perelson_Science1996/model -DPerelson
+LIBPARPE_LOCAL=$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Perelson_Science1996/build/model/libPerelson_Science1996.a -DPerelson
+TERM_PE=_Perelson
+endif
+DIR_Perelson_build := $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Perelson_Science1996/build
+
+ifeq ($(PARPE),Okuonghae)
+INCPARPE_LOCAL=-I$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Okuonghae_ChaosSolitonsFractals2020/model -DOkuonghae
+LIBPARPE_LOCAL=$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Okuonghae_ChaosSolitonsFractals2020/build/model/libOkuonghae_ChaosSolitonsFractals2020.a -DOkuonghae
+TERM_PE=_Okuonghae
+endif
+DIR_Okuonghae_build := $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Okuonghae_ChaosSolitonsFractals2020/build
+
+ifeq ($(PARPE),Rahman)
+INCPARPE_LOCAL=-I$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Rahman_MBS2016/model -DRahman
+LIBPARPE_LOCAL=$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Rahman_MBS2016/build/model/libRahman_MBS2016.a -DRahman
+TERM_PE=_Rahman
+endif
+DIR_Rahman_build := $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Rahman_MBS2016/build
+
+ifeq ($(PARPE),SalazarCavazos)
+INCPARPE_LOCAL=-I$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_SalazarCavazos_MBoC2020/model -DSalazarCavazos
+LIBPARPE_LOCAL=$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_SalazarCavazos_MBoC2020/build/model/libSalazarCavazos_MBoC2020.a -DSalazarCavazos
+TERM_PE=_SalazarCavazos
+endif
+DIR_SalazarCavazos_build := $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_SalazarCavazos_MBoC2020/build
+
+ifeq ($(PARPE),Schwen)
+INCPARPE_LOCAL=-I$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Schwen_PONE2014/model -DSchwen
+LIBPARPE_LOCAL=$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Schwen_PONE2014/build/model/libSchwen_PONE2014.a -DSchwen
+TERM_PE=_Schwen
+endif
+DIR_Schwen_build := $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Schwen_PONE2014/build
+
+ifeq ($(PARPE),Zhao)
+INCPARPE_LOCAL=-I$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Zhao_QuantBiol2020/model -DZhao
+LIBPARPE_LOCAL=$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Zhao_QuantBiol2020/build/model/libZhao_QuantBiol2020.a -DZhao
+TERM_PE=_Zhao
+endif
+DIR_Zhao_build := $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Zhao_QuantBiol2020/build
+
+ifeq ($(PARPE),Lucarelli)
+INCPARPE_LOCAL=-I$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Lucarelli_CellSystems2018/model -DLucarelli
+LIBPARPE_LOCAL=$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Lucarelli_CellSystems2018/build/model/libLucarelli_CellSystems2018.a -DLucarelli
+TERM_PE=_Lucarelli
+endif
+DIR_Lucarelli_build := $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Lucarelli_CellSystems2018/build
+
+ifeq ($(PARPE),Oliveira)
+INCPARPE_LOCAL=-I$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Oliveira_NatCommun2021/model -DOliveira
+LIBPARPE_LOCAL=$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Oliveira_NatCommun2021/build/model/libOliveira_NatCommun2021.a -DOliveira
+TERM_PE=_Oliveira
+endif
+DIR_Oliveira_build := $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Oliveira_NatCommun2021/build
+
+ifeq ($(PARPE),Raimundez)
+INCPARPE_LOCAL=-I$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Raimundez_PCB2020/model -DRaimundez
+LIBPARPE_LOCAL=$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Raimundez_PCB2020/build/model/libRaimundez_PCB2020.a -DRaimundez
+TERM_PE=_Raimundez
+endif
+DIR_Raimundez_build := $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Raimundez_PCB2020/build
+
+ifeq ($(PARPE),Isensee)
+INCPARPE_LOCAL=-I$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Isensee_JCB2018/model -DIsensee
+LIBPARPE_LOCAL=$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Isensee_JCB2018/build/model/libIsensee_JCB2018.a -DIsensee
+TERM_PE=_Isensee
+endif
+DIR_Isensee_build := $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Isensee_JCB2018/build
+
+ifeq ($(PARPE),Brannmark)
+INCPARPE_LOCAL=-I$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Brannmark_JBC2010/model -DBrannmark
+LIBPARPE_LOCAL=$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Brannmark_JBC2010/build/model/libBrannmark_JBC2010.a -DBrannmark
+TERM_PE=_Brannmark
+endif
+DIR_Brannmark_build := $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Brannmark_JBC2010/build
+
+
+ifeq ($(PARPE),Fiedler)
+INCPARPE_LOCAL=-I$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Fiedler_BMCSystBiol2016/model -DFiedler
+LIBPARPE_LOCAL=$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Fiedler_BMCSystBiol2016/build/model/libFiedler_BMCSystBiol2016.a -DFiedler
+TERM_PE=_Fiedler
+endif
+DIR_Fiedler_build := $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Fiedler_BMCSystBiol2016/build
+
+
+ifeq ($(PARPE),Armistead)
+INCPARPE_LOCAL=-I$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Armistead_CellDeathDis2024/model -DArmistead
+LIBPARPE_LOCAL=$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Armistead_CellDeathDis2024//build/model/libArmistead_CellDeathDis2024.a -DArmistead
+TERM_PE=_Armistead
+endif
+DIR_Armistead_build := $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Armistead_CellDeathDis2024/build
+
+ifeq ($(PARPE),Raia)
+INCPARPE_LOCAL=-I$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Raia_CancerResearch2011/model -DRaia
+LIBPARPE_LOCAL=$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Raia_CancerResearch2011/build/model/libRaia_CancerResearch2011.a -DRaia
+TERM_PE=_Raia
+endif
+DIR_Raia_build := $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Raia_CancerResearch2011/build
+
+ifeq ($(PARPE),Smith)
+INCPARPE_LOCAL=-I$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Smith_BMCSystBiol2013/model -DSmith
+LIBPARPE_LOCAL=$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Smith_BMCSystBiol2013/build/model/libSmith_BMCSystBiol2013.a -DSmith
+TERM_PE=_Smith
+endif
+DIR_Smith_build := $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Smith_BMCSystBiol2013/build
+
+#############################################################################
+# END BENCHMARKS FILES SECTION
+##############################################################################
+
+INCPARPE=$(INCPARPE_LOCAL)
+LIBPARPE=$(LIBPARPE_LOCAL)
+############################################################################
+
+INCPARPE+=-I$(PATHPARPE)/include
+INCPARPE+=-I$(PATHPARPE)/ThirdParty/gsl
+INCPARPE+=-I$(PATHPARPE)/deps/AMICI/include
+INCPARPE+=-I$(PATHPARPE)/deps/AMICI/ThirdParty/sundials/build/include
+INCPARPE+=-I$(PATHPARPE)/deps/AMICI/ThirdParty/sundials/include
+INCPARPE+=-I$(PATHPARPE)/deps/AMICI/ThirdParty/SuiteSparse/include
+INCPARPE+=-I$(PATHPARPE)/deps/AMICI/build/include
+INCPARPE+=-I$(PATHPARPE)/deps/AMICI/ThirdParty/sundials/src/cvodes
+INCPARPE+=-I/parPE/include -I/parPE/build/src -I/usr/lib/x86_64-linux-gnu/openmpi/include
+INCPARPE+=-fopenmp -O3 -I/usr/lib/llvm-18/include
+
+LIBPARPE+=-L/usr/lib/x86_k64-linux-gnu   -lboost_system -lboost_serialization -lboost_chrono -lboost_system  -lipopt
+
+LIBPARPE+=/usr/lib/libipopt.so -L/usr/lib/x86_64-linux-gnu/hdf5/serial -fopenmp -O3 -I/usr/lib/llvm-18/include
+LIBPARPE+=-L/usr/lib/x86_64-linux-gnu/hdf5/serial -fopenmp -O3 -I/usr/lib/llvm-18/include
+LIBPARPE+=-Wl,--start-group 
+LIBPARPE+=$(PATHPARPE)/build/libparpe.a
+LIBPARPE+=$(PATHPARPE)/build/src/parpeamici/libparpeamici.a
+LIBPARPE+=$(PATHPARPE)/deps/AMICI/build/libamici.a
+LIBPARPE+=$(PATHPARPE)/deps/AMICI/ThirdParty/sundials/build/lib/libsundials_core.a
+LIBPARPE+=$(PATHPARPE)/deps/AMICI/ThirdParty/sundials/build/lib/libsundials_nvecserial.a
+LIBPARPE+=$(PATHPARPE)/deps/AMICI/ThirdParty/sundials/build/lib/libsundials_cvodes.a
+LIBPARPE+=$(PATHPARPE)/deps/AMICI/ThirdParty/sundials/build/lib/libsundials_idas.a
+LIBPARPE+=$(PATHPARPE)/deps/AMICI/ThirdParty/sundials/build/lib/libsundials_sunlinsolband.a
+LIBPARPE+=$(PATHPARPE)/deps/AMICI/ThirdParty/sundials/build/lib/libsundials_sunlinsolklu.a
+LIBPARPE+=$(PATHPARPE)/deps/AMICI/ThirdParty/sundials/build/lib/libsundials_sunlinsolpcg.a
+LIBPARPE+=$(PATHPARPE)/deps/AMICI/ThirdParty/sundials/build/lib/libsundials_sunlinsolspbcgs.a
+LIBPARPE+=$(PATHPARPE)/deps/AMICI/ThirdParty/sundials/build/lib/libsundials_sunlinsolspfgmr.a
+LIBPARPE+=$(PATHPARPE)/deps/AMICI/ThirdParty/sundials/build/lib/libsundials_sunlinsolspgmr.a
+LIBPARPE+=$(PATHPARPE)/deps/AMICI/ThirdParty/sundials/build/lib/libsundials_sunlinsolsptfqmr.a
+
+LIBPARPE+=$(PATHPARPE)/deps/AMICI/ThirdParty/sundials/build/lib/libsundials_sunmatrixband.a
+LIBPARPE+=$(PATHPARPE)/deps/AMICI/ThirdParty/sundials/build/lib/libsundials_sunmatrixdense.a
+LIBPARPE+=$(PATHPARPE)/deps/AMICI/ThirdParty/sundials/build/lib/libsundials_sunmatrixsparse.a
+LIBPARPE+=$(PATHPARPE)/deps/AMICI/ThirdParty/sundials/build/lib/libsundials_sunnonlinsolfixedpoint.a
+LIBPARPE+=$(PATHPARPE)/deps/AMICI/ThirdParty/sundials/build/lib/libsundials_sunnonlinsolnewton.a
+
+LIBPARPE+=$(PATHPARPE)/deps/AMICI/ThirdParty/SuiteSparse/install/lib/libklu.a
+LIBPARPE+=$(PATHPARPE)/deps/AMICI/ThirdParty/SuiteSparse/install/lib/libcolamd.a
+LIBPARPE+=$(PATHPARPE)/deps/AMICI/ThirdParty/SuiteSparse/install/lib/libbtf.a
+LIBPARPE+=$(PATHPARPE)/deps/AMICI/ThirdParty/SuiteSparse/install/lib/libamd.a
+LIBPARPE+=$(PATHPARPE)/deps/AMICI/ThirdParty/SuiteSparse/install/lib/libsuitesparseconfig.a
+LIBPARPE+=$(PATHPARPE)/build/src/parpeloadbalancer/libparpeloadbalancer.a
+LIBPARPE+=$(PATHPARPE)/build/src/parpeoptimization/libparpeoptimization.a
+LIBPARPE+=$(PATHPARPE)/build/src/parpecommon/libparpecommon.a
+
+LIBPARPE+=-L/usr/lib/x86_k64-linux-gnu   -lboost_system -lboost_serialization -lboost_chrono -lboost_system  -lipopt
+
+LIBPARPE+=-Wl,--end-group
+
+
+LIBLINKER+=-L/usr/lib/x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13 
+LIBLINKER+=-L/usr/lib/x86_64-linux-gnu/hdf5/serial -lhdf5 -lhdf5_hl -L/usr/lib/llvm-18/lib -lomp
+
+#LIBPARPE+=$(PATHHDF5)/lib/libhdf5_cpp.so
+#LIBPARPE+=$(PATHHDF5)/lib/libhdf5_hl_cpp.so
+#LIBPARPE+=$(PATHHDF5)/lib/libhdf5_hl.so
+#LIBPARPE+=$(PATHHDF5)/lib/libhdf5.so
+
+
+#############################################################################
+## XML
+#############################################################################
+INC+= -I$(LIBRARY)/libxml2/include
+LIBS+= -lxml2 #-L$(LIBRARY)/libxml2/lib -lxml2 
+#############################################################################
+
+export AR
+export CC
+export CCP
+export FC
+export CLIBS
+export CFLAGS
+export CPPFLAGS
+export FLIBS
+export FFLAGS
+SRC+=$(wildcard $(BUILDDIR)/benchmarks/bbob/*.c)
+SRC+=$(wildcard $(BUILDDIR)/benchmarks/customized/*.c)
+SRC+=$(wildcard $(BUILDDIR)/benchmarks/systemsBiology/*.c)
+SRC+=$(wildcard $(BUILDDIR)/benchmarks/systemsBiology/others/*.c)
+SRC+=$(wildcard $(BUILDDIR)/src/input_module/input_module.c)
+SRC+=$(wildcard $(BUILDDIR)/src/output/*.c)
+SRC+=$(wildcard $(BUILDDIR)/src/structure_data/*.c)
+SRC+=$(wildcard $(BUILDDIR)/src/method_module/*.c)
+SRC+=$(wildcard $(BUILDDIR)/src/method_module/DE/*.c)
+SRC+=$(wildcard $(BUILDDIR)/src/method_module/eSS/*.c)
+SRC+=$(wildcard $(BUILDDIR)/src/*.c)
+SRC+=$(wildcard $(BUILDDIR)/benchmarks/systemsBiology/parPE/*.c)
+
+SRCFORTRAN+=$(wildcard $(BUILDDIR)/src/method_module_fortran/eSS/scattersearchtypes.f90)
+SRCFORTRAN+=$(wildcard $(BUILDDIR)/src/method_module_fortran/eSS/common_functions.f90)
+SRCFORTRAN+=$(wildcard $(BUILDDIR)/src/method_module_fortran/eSS/funcevalinterface.f90)
+SRCFORTRAN+=$(wildcard $(BUILDDIR)/src/method_module_fortran/eSS/qsort_mod.f90)
+SRCFORTRAN+=$(wildcard $(BUILDDIR)/src/method_module_fortran/eSS/outputhdf5.f90)
+SRCFORTRAN+=$(wildcard $(BUILDDIR)/src/method_module_fortran/eSS/localsolvers/dhc/dhc.f90)
+#SRCFORTRAN+=$(wildcard $(BUILDDIR)/src/method_module_fortran/eSS/localsolvers/misqp/misqp_interface.f90)
+SRCFORTRAN+=$(wildcard $(BUILDDIR)/src/method_module_fortran/eSS/localsolvers/localsolver.f90)
+SRCFORTRAN+=$(wildcard $(BUILDDIR)/src/method_module_fortran/eSS/scattersearchfunctions.f90)
+SRCFORTRAN+=$(wildcard $(BUILDDIR)/src/method_module_fortran/eSS/localsolvers/localsolverinterfacec.f90)
+SRCFORTRAN+=$(wildcard $(BUILDDIR)/src/method_module_fortran/eSS/parallelscattersearchfunctions.f90)
+SRCFORTRAN+=$(wildcard $(BUILDDIR)/src/method_module_fortran/eSS/scattersearch.f90)
+SRCFORTRAN+=$(wildcard $(BUILDDIR)/src/method_module_fortran/eSS/cess.f90)
+SRCFORTRAN+=$(wildcard $(BUILDDIR)/src/method_module_fortran/eSS/sacess.f90)
+SRCFORTRAN+=$(wildcard $(BUILDDIR)/src/method_module_fortran/eSS/hyper.f90)
+SRCFORTRAN+=$(wildcard $(BUILDDIR)/src/method_module_fortran/eSS/sacde.f90)
+SRCFORTRAN+=$(wildcard $(BUILDDIR)/src/method_module_fortran/eSS/acessdist.f90)
+SRCFORTRAN+=$(wildcard $(BUILDDIR)/src/method_module_fortran/eSS/essm.f90)
+SRCFORTRAN+=$(SRCFORTRAN_MATLAB)
+
+
+INC+=-I$(BUILDDIR)/benchmarks/systemsBiology/
+INC+=-I$(BUILDDIR)/benchmarks/systemsBiology/parPE
+INC+=-I$(BUILDDIR)/benchmarks/customized/
+INC+=-I$(BUILDDIR)/benchmarks/bbob/
+INC+=-I$(BUILDDIR)/include/
+INC+=-I$(BUILDDIR)/include/input/
+INC+=-I$(BUILDDIR)/include/method_module/
+INC+=-I$(BUILDDIR)/include/method_module/eSS/
+INC+=-I$(BUILDDIR)/include/structure_data/
+INC+=-I$(BUILDDIR)/include/output/
+INC+=-I$(BUILDDIR)/include/error/
+INC+=-I$(BUILDDIR)/include/method_module_fortran/
+INC+=-I$(BUILDDIR)/src/method_module_fortran/eSS/
+INC+=-I$(BUILDDIR)/src/method_module_fortran/eSS/localsolvers
+INC+=-I$(BUILDDIR)/src/method_module_fortran/eSS/localsolvers/dhc
+#INC+=-I$(BUILDDIR)/src/method_module_fortran/eSS/localsolvers/misqp
+INC+=-I$(BUILDDIR)/src/method_module_fortran/eSS/localsolvers/nl2sol
+
+INC+=  -I$(LIBRARY)/gsl-1.14 -I$(LIBRARY)/gsl-1.14/include  -I$(LIBRARY)/gsl-1.14/include/gsl
+INC+= -I/usr/include/hdf5/serial
+LIBS+= -L$(LIBRARY)/gsl-1.14/lib -lgsl	 -L/usr/lib/x86_64-linux-gnu/hdf5/serial -L/usr/lib/x86_64-linux-gnu
+LIBS+=  -fPIC -DEXPORT #-lAMIGO -fPIC -DEXPORT
+PROG := bin/paralleltestbed
+
+OBJFILES := $(SRC:.c=.o)
+DEPFILES := $(SRC:.c=.d)
+
+OBJN2SOL=$(BUILDDIR)/src/method_module_fortran/eSS/localsolvers/nl2sol/src_nl2sol/*.o
+
+OBJFORTRANFILES := $(SRCFORTRAN:.f90=.o)
+DEPFORTRANFILES := $(SRCFORTRAN:.f90=.d)
+MODFORTRANFILES := $(SRCFORTRAN:.f90=.mod)
+
+all: N2SOL PARPE $(OBJFORTRANFILES)  $(OBJCPPFILES) $(PROG)
+
+BLAS:
+	cd $(BUILDDIR)/lib/BLAS && $(MAKE) 
+
+N2SOL:
+	cd $(BUILDDIR)/src/method_module_fortran/eSS/localsolvers/nl2sol/src_nl2sol && $(MAKE) 	
+
+PARPE:
+	@echo "Current environment:"
+	@echo "HDF5_DIR = $(HDF5_DIR)";
+	@echo "CMAKE_PREFIX_PATH = $(CMAKE_PREFIX_PATH)";
+	@echo "LIBRARY_PATH = $(LD_LIBRARY_PATH)";
+	rm -f $(BUILDDIR)/benchmarks/systemsBiology/*.o
+	rm -f $(BUILDDIR)/benchmarks/systemsBiology/parPE/*.o
+	if [ -d "$(DIR_Boehm_build)"  ]; then \
+		cd $(DIR_Boehm_build) && $(MAKE);  \
+	else \
+		mkdir $(DIR_Boehm_build) && cd $(DIR_Boehm_build) && \
+		cmake .. \
+			-DAmici_DIR=/parPE/deps/AMICI/build \
+	        -DParPE_DIR=/parPE/build/ \
+	        -DCMAKE_CXX_FLAGS="-I/parPE/include -I/parPE/build/src -I/usr/lib/x86_64-linux-gnu/openmpi/include -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+	        -DCMAKE_C_FLAGS="-L/usr/lib/x86_64-linux-gnu/hdf5/serial -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+	        -DCMAKE_EXE_LINKER_FLAGS="-L/usr/lib/x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/x86_64-linux-gnu/hdf5/serial -lhdf5 -lhdf5_hl -L/usr/lib/llvm-18/lib -lomp" \
+	        -DCMAKE_PREFIX_PATH=$(CMAKE_PREFIX_PATH) \
+	        -DCMAKE_INCLUDE_PATH=$(CMAKE_INCLUDE_PATH) \
+	        -DCMAKE_LIBRARY_PATH=$(CMAKE_LIBRARY_PATH) \
+		-DOpenMP_C_LIB_NAMES="omp" -DOpenMP_CXX_LIB_NAMES="omp" \
+	        -DOpenMP_omp_LIBRARY="/usr/lib/llvm-18/lib/libomp.so"\
+	        -DCMAKE_C_COMPILER=/usr/bin/gcc \
+	        -DCMAKE_CXX_COMPILER=/usr/bin/g++  \
+		-DSuiteSparse_DIR=/parPE/deps/AMICI/ThirdParty/SuiteSparse/install \
+		-DCeres_DIR=/usr/lib/x86_64-linux-gnu/cmake/Ceres \
+		-DCMAKE_PREFIX_PATH=/parPE/deps/AMICI/build:/usr/lib/x86_64-linux-gnu/cmake && \
+		$(MAKE); \
+	fi
+	if [ -d "$(DIR_Borghans_build)"  ]; then \
+		cd $(DIR_Borghans_build) && $(MAKE);  \
+	else \
+		mkdir $(DIR_Borghans_build) && cd $(DIR_Borghans_build) && \
+		cmake .. \
+                -DAmici_DIR=/parPE/deps/AMICI/build \
+                -DParPE_DIR=/parPE/build/ \
+                -DCMAKE_CXX_FLAGS="-I/parPE/include -I/parPE/build/src -I/usr/lib/x86_64-linux-gnu/openmpi/include -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_C_FLAGS="-L/usr/lib/x86_64-linux-gnu/hdf5/serial -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_EXE_LINKER_FLAGS="-L/usr/lib/x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/x86_64-linux-gnu/hdf5/serial -lhdf5 -lhdf5_hl -L/usr/lib/llvm-18/lib -lomp" \
+                -DCMAKE_PREFIX_PATH=$(CMAKE_PREFIX_PATH) \
+                -DCMAKE_INCLUDE_PATH=$(CMAKE_INCLUDE_PATH) \
+                -DCMAKE_LIBRARY_PATH=$(CMAKE_LIBRARY_PATH) \
+                -DOpenMP_C_LIB_NAMES="omp" -DOpenMP_CXX_LIB_NAMES="omp" \
+                -DOpenMP_omp_LIBRARY="/usr/lib/llvm-18/lib/libomp.so"\
+                -DCMAKE_C_COMPILER=/usr/bin/gcc \
+                -DCMAKE_CXX_COMPILER=/usr/bin/g++ && \
+		$(MAKE); \
+	fi
+	if [ -d "$(DIR_Blasi_build)"  ]; then \
+		cd $(DIR_Blasi_build) && $(MAKE);  \
+	else \
+		mkdir $(DIR_Blasi_build) && cd $(DIR_Blasi_build) && \
+		cmake .. \
+                -DAmici_DIR=/parPE/deps/AMICI/build \
+                -DParPE_DIR=/parPE/build/ \
+                -DCMAKE_CXX_FLAGS="-I/parPE/include -I/parPE/build/src -I/usr/lib/x86_64-linux-gnu/openmpi/include -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_C_FLAGS="-L/usr/lib/x86_64-linux-gnu/hdf5/serial -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_EXE_LINKER_FLAGS="-L/usr/lib/x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/x86_64-linux-gnu/hdf5/serial -lhdf5 -lhdf5_hl -L/usr/lib/llvm-18/lib -lomp" \
+                -DCMAKE_PREFIX_PATH=$(CMAKE_PREFIX_PATH) \
+                -DCMAKE_INCLUDE_PATH=$(CMAKE_INCLUDE_PATH) \
+                -DCMAKE_LIBRARY_PATH=$(CMAKE_LIBRARY_PATH) \
+                -DOpenMP_C_LIB_NAMES="omp" -DOpenMP_CXX_LIB_NAMES="omp" \
+                -DOpenMP_omp_LIBRARY="/usr/lib/llvm-18/lib/libomp.so"\
+                -DCMAKE_C_COMPILER=/usr/bin/gcc \
+                -DCMAKE_CXX_COMPILER=/usr/bin/g++ && \
+		$(MAKE); \
+	fi
+	if [ -d "$(DIR_Crauste_build)"  ]; then \
+		cd $(DIR_Crauste_build) && $(MAKE);  \
+	else \
+		mkdir $(DIR_Crauste_build) && cd $(DIR_Crauste_build) && \
+		cmake .. \
+                -DAmici_DIR=/parPE/deps/AMICI/build \
+                -DParPE_DIR=/parPE/build/ \
+                -DCMAKE_CXX_FLAGS="-I/parPE/include -I/parPE/build/src -I/usr/lib/x86_64-linux-gnu/openmpi/include -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_C_FLAGS="-L/usr/lib/x86_64-linux-gnu/hdf5/serial -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_EXE_LINKER_FLAGS="-L/usr/lib/x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/x86_64-linux-gnu/hdf5/serial -lhdf5 -lhdf5_hl -L/usr/lib/llvm-18/lib -lomp" \
+                -DCMAKE_PREFIX_PATH=$(CMAKE_PREFIX_PATH) \
+                -DCMAKE_INCLUDE_PATH=$(CMAKE_INCLUDE_PATH) \
+                -DCMAKE_LIBRARY_PATH=$(CMAKE_LIBRARY_PATH) \
+                -DOpenMP_C_LIB_NAMES="omp" -DOpenMP_CXX_LIB_NAMES="omp" \
+                -DOpenMP_omp_LIBRARY="/usr/lib/llvm-18/lib/libomp.so"\
+                -DCMAKE_C_COMPILER=/usr/bin/gcc \
+                -DCMAKE_CXX_COMPILER=/usr/bin/g++ && \
+		$(MAKE); \
+	fi
+	if [ -d "$(DIR_Elowitz_build)"  ]; then \
+		cd $(DIR_Elowitz_build) && $(MAKE);  \
+	else \
+		mkdir $(DIR_Elowitz_build) && cd $(DIR_Elowitz_build) && \
+		cmake .. \
+                -DAmici_DIR=/parPE/deps/AMICI/build \
+                -DParPE_DIR=/parPE/build/ \
+                -DCMAKE_CXX_FLAGS="-I/parPE/include -I/parPE/build/src -I/usr/lib/x86_64-linux-gnu/openmpi/include -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_C_FLAGS="-L/usr/lib/x86_64-linux-gnu/hdf5/serial -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_EXE_LINKER_FLAGS="-L/usr/lib/x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/x86_64-linux-gnu/hdf5/serial -lhdf5 -lhdf5_hl -L/usr/lib/llvm-18/lib -lomp" \
+                -DCMAKE_PREFIX_PATH=$(CMAKE_PREFIX_PATH) \
+                -DCMAKE_INCLUDE_PATH=$(CMAKE_INCLUDE_PATH) \
+                -DCMAKE_LIBRARY_PATH=$(CMAKE_LIBRARY_PATH) \
+                -DOpenMP_C_LIB_NAMES="omp" -DOpenMP_CXX_LIB_NAMES="omp" \
+                -DOpenMP_omp_LIBRARY="/usr/lib/llvm-18/lib/libomp.so"\
+                -DCMAKE_C_COMPILER=/usr/bin/gcc \
+                -DCMAKE_CXX_COMPILER=/usr/bin/g++ && \
+		$(MAKE); \
+	fi
+	if [ -d "$(DIR_Fujita_build)"  ]; then \
+		cd $(DIR_Fujita_build) && $(MAKE);  \
+	else \
+		mkdir $(DIR_Fujita_build) && cd $(DIR_Fujita_build) && \
+		cmake .. \
+                -DAmici_DIR=/parPE/deps/AMICI/build \
+                -DParPE_DIR=/parPE/build/ \
+                -DCMAKE_CXX_FLAGS="-I/parPE/include -I/parPE/build/src -I/usr/lib/x86_64-linux-gnu/openmpi/include -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_C_FLAGS="-L/usr/lib/x86_64-linux-gnu/hdf5/serial -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_EXE_LINKER_FLAGS="-L/usr/lib/x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/x86_64-linux-gnu/hdf5/serial -lhdf5 -lhdf5_hl -L/usr/lib/llvm-18/lib -lomp" \
+                -DCMAKE_PREFIX_PATH=$(CMAKE_PREFIX_PATH) \
+                -DCMAKE_INCLUDE_PATH=$(CMAKE_INCLUDE_PATH) \
+                -DCMAKE_LIBRARY_PATH=$(CMAKE_LIBRARY_PATH) \
+                -DOpenMP_C_LIB_NAMES="omp" -DOpenMP_CXX_LIB_NAMES="omp" \
+                -DOpenMP_omp_LIBRARY="/usr/lib/llvm-18/lib/libomp.so"\
+                -DCMAKE_C_COMPILER=/usr/bin/gcc \
+                -DCMAKE_CXX_COMPILER=/usr/bin/g++ && \
+		$(MAKE); \
+	fi
+	if [ -d "$(DIR_Sneyd_build)"  ]; then \
+		cd $(DIR_Sneyd_build) && $(MAKE);  \
+	else \
+		mkdir $(DIR_Sneyd_build) && cd $(DIR_Sneyd_build) && \
+		cmake .. \
+                -DAmici_DIR=/parPE/deps/AMICI/build \
+                -DParPE_DIR=/parPE/build/ \
+                -DCMAKE_CXX_FLAGS="-I/parPE/include -I/parPE/build/src -I/usr/lib/x86_64-linux-gnu/openmpi/include -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_C_FLAGS="-L/usr/lib/x86_64-linux-gnu/hdf5/serial -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_EXE_LINKER_FLAGS="-L/usr/lib/x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/x86_64-linux-gnu/hdf5/serial -lhdf5 -lhdf5_hl -L/usr/lib/llvm-18/lib -lomp" \
+                -DCMAKE_PREFIX_PATH=$(CMAKE_PREFIX_PATH) \
+                -DCMAKE_INCLUDE_PATH=$(CMAKE_INCLUDE_PATH) \
+                -DCMAKE_LIBRARY_PATH=$(CMAKE_LIBRARY_PATH) \
+                -DOpenMP_C_LIB_NAMES="omp" -DOpenMP_CXX_LIB_NAMES="omp" \
+                -DOpenMP_omp_LIBRARY="/usr/lib/llvm-18/lib/libomp.so"\
+                -DCMAKE_C_COMPILER=/usr/bin/gcc \
+                -DCMAKE_CXX_COMPILER=/usr/bin/g++ && \
+		$(MAKE); \
+	fi
+	if [ -d "$(DIR_Weber_build)"  ]; then \
+		cd $(DIR_Weber_build) && $(MAKE);  \
+	else \
+		mkdir $(DIR_Weber_build) && cd $(DIR_Weber_build) && \
+		cmake .. \
+                -DAmici_DIR=/parPE/deps/AMICI/build \
+                -DParPE_DIR=/parPE/build/ \
+                -DCMAKE_CXX_FLAGS="-I/parPE/include -I/parPE/build/src -I/usr/lib/x86_64-linux-gnu/openmpi/include -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_C_FLAGS="-L/usr/lib/x86_64-linux-gnu/hdf5/serial -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_EXE_LINKER_FLAGS="-L/usr/lib/x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/x86_64-linux-gnu/hdf5/serial -lhdf5 -lhdf5_hl -L/usr/lib/llvm-18/lib -lomp" \
+                -DCMAKE_PREFIX_PATH=$(CMAKE_PREFIX_PATH) \
+                -DCMAKE_INCLUDE_PATH=$(CMAKE_INCLUDE_PATH) \
+                -DCMAKE_LIBRARY_PATH=$(CMAKE_LIBRARY_PATH) \
+                -DOpenMP_C_LIB_NAMES="omp" -DOpenMP_CXX_LIB_NAMES="omp" \
+                -DOpenMP_omp_LIBRARY="/usr/lib/llvm-18/lib/libomp.so"\
+                -DCMAKE_C_COMPILER=/usr/bin/gcc \
+                -DCMAKE_CXX_COMPILER=/usr/bin/g++ && \
+		$(MAKE); \
+	fi
+	if [ -d "$(DIR_Zheng_build)"  ]; then \
+		cd $(DIR_Zheng_build) && $(MAKE);  \
+	else \
+		mkdir $(DIR_Zheng_build) && cd $(DIR_Zheng_build) && \
+		cmake .. \
+                -DAmici_DIR=/parPE/deps/AMICI/build \
+                -DParPE_DIR=/parPE/build/ \
+                -DCMAKE_CXX_FLAGS="-I/parPE/include -I/parPE/build/src -I/usr/lib/x86_64-linux-gnu/openmpi/include -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_C_FLAGS="-L/usr/lib/x86_64-linux-gnu/hdf5/serial -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_EXE_LINKER_FLAGS="-L/usr/lib/x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/x86_64-linux-gnu/hdf5/serial -lhdf5 -lhdf5_hl -L/usr/lib/llvm-18/lib -lomp" \
+                -DCMAKE_PREFIX_PATH=$(CMAKE_PREFIX_PATH) \
+                -DCMAKE_INCLUDE_PATH=$(CMAKE_INCLUDE_PATH) \
+                -DCMAKE_LIBRARY_PATH=$(CMAKE_LIBRARY_PATH) \
+                -DOpenMP_C_LIB_NAMES="omp" -DOpenMP_CXX_LIB_NAMES="omp" \
+                -DOpenMP_omp_LIBRARY="/usr/lib/llvm-18/lib/libomp.so"\
+                -DCMAKE_C_COMPILER=/usr/bin/gcc \
+                -DCMAKE_CXX_COMPILER=/usr/bin/g++ && \
+		$(MAKE); \
+	fi
+	if [ -d "$(DIR_Bruno_build)"  ]; then \
+		cd $(DIR_Bruno_build) && $(MAKE);  \
+	else \
+		mkdir $(DIR_Bruno_build) && cd $(DIR_Bruno_build) && \
+		cmake .. \
+                -DAmici_DIR=/parPE/deps/AMICI/build \
+                -DParPE_DIR=/parPE/build/ \
+                -DCMAKE_CXX_FLAGS="-I/parPE/include -I/parPE/build/src -I/usr/lib/x86_64-linux-gnu/openmpi/include -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_C_FLAGS="-L/usr/lib/x86_64-linux-gnu/hdf5/serial -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_EXE_LINKER_FLAGS="-L/usr/lib/x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/x86_64-linux-gnu/hdf5/serial -lhdf5 -lhdf5_hl -L/usr/lib/llvm-18/lib -lomp" \
+                -DCMAKE_PREFIX_PATH=$(CMAKE_PREFIX_PATH) \
+                -DCMAKE_INCLUDE_PATH=$(CMAKE_INCLUDE_PATH) \
+                -DCMAKE_LIBRARY_PATH=$(CMAKE_LIBRARY_PATH) \
+                -DOpenMP_C_LIB_NAMES="omp" -DOpenMP_CXX_LIB_NAMES="omp" \
+                -DOpenMP_omp_LIBRARY="/usr/lib/llvm-18/lib/libomp.so"\
+                -DCMAKE_C_COMPILER=/usr/bin/gcc \
+                -DCMAKE_CXX_COMPILER=/usr/bin/g++ && \
+		$(MAKE); \
+	fi
+	if [ -d "$(DIR_Chen_build)"  ]; then \
+		cd $(DIR_Chen_build) && $(MAKE);  \
+	else \
+		mkdir $(DIR_Chen_build) && cd $(DIR_Chen_build) && \
+		cmake .. \
+                -DAmici_DIR=/parPE/deps/AMICI/build \
+                -DParPE_DIR=/parPE/build/ \
+                -DCMAKE_CXX_FLAGS="-I/parPE/include -I/parPE/build/src -I/usr/lib/x86_64-linux-gnu/openmpi/include -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_C_FLAGS="-L/usr/lib/x86_64-linux-gnu/hdf5/serial -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_EXE_LINKER_FLAGS="-L/usr/lib/x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/x86_64-linux-gnu/hdf5/serial -lhdf5 -lhdf5_hl -L/usr/lib/llvm-18/lib -lomp" \
+                -DCMAKE_PREFIX_PATH=$(CMAKE_PREFIX_PATH) \
+                -DCMAKE_INCLUDE_PATH=$(CMAKE_INCLUDE_PATH) \
+                -DCMAKE_LIBRARY_PATH=$(CMAKE_LIBRARY_PATH) \
+                -DOpenMP_C_LIB_NAMES="omp" -DOpenMP_CXX_LIB_NAMES="omp" \
+                -DOpenMP_omp_LIBRARY="/usr/lib/llvm-18/lib/libomp.so"\
+                -DCMAKE_C_COMPILER=/usr/bin/gcc \
+                -DCMAKE_CXX_COMPILER=/usr/bin/g++ && \
+		$(MAKE); \
+	fi
+	if [ -d "$(DIR_Giordano_build)"  ]; then \
+		cd $(DIR_Giordano_build) && $(MAKE);  \
+	else \
+		mkdir $(DIR_Giordano_build) && cd $(DIR_Giordano_build) && \
+		cmake .. \
+                -DAmici_DIR=/parPE/deps/AMICI/build \
+                -DParPE_DIR=/parPE/build/ \
+                -DCMAKE_CXX_FLAGS="-I/parPE/include -I/parPE/build/src -I/usr/lib/x86_64-linux-gnu/openmpi/include -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_C_FLAGS="-L/usr/lib/x86_64-linux-gnu/hdf5/serial -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_EXE_LINKER_FLAGS="-L/usr/lib/x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/x86_64-linux-gnu/hdf5/serial -lhdf5 -lhdf5_hl -L/usr/lib/llvm-18/lib -lomp" \
+                -DCMAKE_PREFIX_PATH=$(CMAKE_PREFIX_PATH) \
+                -DCMAKE_INCLUDE_PATH=$(CMAKE_INCLUDE_PATH) \
+                -DCMAKE_LIBRARY_PATH=$(CMAKE_LIBRARY_PATH) \
+                -DOpenMP_C_LIB_NAMES="omp" -DOpenMP_CXX_LIB_NAMES="omp" \
+                -DOpenMP_omp_LIBRARY="/usr/lib/llvm-18/lib/libomp.so"\
+                -DCMAKE_C_COMPILER=/usr/bin/gcc \
+                -DCMAKE_CXX_COMPILER=/usr/bin/g++ && \
+		$(MAKE); \
+	fi
+	if [ -d "$(DIR_Giordano_build)"  ]; then \
+		cd $(DIR_Giordano_build) && $(MAKE);  \
+	else \
+		mkdir $(DIR_Giordano_build) && cd $(DIR_Giordano_build) && \
+		cmake .. \
+                -DAmici_DIR=/parPE/deps/AMICI/build \
+                -DParPE_DIR=/parPE/build/ \
+                -DCMAKE_CXX_FLAGS="-I/parPE/include -I/parPE/build/src -I/usr/lib/x86_64-linux-gnu/openmpi/include -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_C_FLAGS="-L/usr/lib/x86_64-linux-gnu/hdf5/serial -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_EXE_LINKER_FLAGS="-L/usr/lib/x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/x86_64-linux-gnu/hdf5/serial -lhdf5 -lhdf5_hl -L/usr/lib/llvm-18/lib -lomp" \
+                -DCMAKE_PREFIX_PATH=$(CMAKE_PREFIX_PATH) \
+                -DCMAKE_INCLUDE_PATH=$(CMAKE_INCLUDE_PATH) \
+                -DCMAKE_LIBRARY_PATH=$(CMAKE_LIBRARY_PATH) \
+                -DOpenMP_C_LIB_NAMES="omp" -DOpenMP_CXX_LIB_NAMES="omp" \
+                -DOpenMP_omp_LIBRARY="/usr/lib/llvm-18/lib/libomp.so"\
+                -DCMAKE_C_COMPILER=/usr/bin/gcc \
+                -DCMAKE_CXX_COMPILER=/usr/bin/g++ && \
+		$(MAKE); \
+	fi
+	if [ -d "$(DIR_Bertozzi_build)"  ]; then \
+		cd $(DIR_Bertozzi_build) && $(MAKE);  \
+	else \
+		mkdir $(DIR_Bertozzi_build) && cd $(DIR_Bertozzi_build) && \
+		cmake .. \
+                -DAmici_DIR=/parPE/deps/AMICI/build \
+                -DParPE_DIR=/parPE/build/ \
+                -DCMAKE_CXX_FLAGS="-I/parPE/include -I/parPE/build/src -I/usr/lib/x86_64-linux-gnu/openmpi/include -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_C_FLAGS="-L/usr/lib/x86_64-linux-gnu/hdf5/serial -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_EXE_LINKER_FLAGS="-L/usr/lib/x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/x86_64-linux-gnu/hdf5/serial -lhdf5 -lhdf5_hl -L/usr/lib/llvm-18/lib -lomp" \
+                -DCMAKE_PREFIX_PATH=$(CMAKE_PREFIX_PATH) \
+                -DCMAKE_INCLUDE_PATH=$(CMAKE_INCLUDE_PATH) \
+                -DCMAKE_LIBRARY_PATH=$(CMAKE_LIBRARY_PATH) \
+                -DOpenMP_C_LIB_NAMES="omp" -DOpenMP_CXX_LIB_NAMES="omp" \
+                -DOpenMP_omp_LIBRARY="/usr/lib/llvm-18/lib/libomp.so"\
+                -DCMAKE_C_COMPILER=/usr/bin/gcc \
+                -DCMAKE_CXX_COMPILER=/usr/bin/g++ && \
+		$(MAKE); \
+	fi
+	if [ -d "$(DIR_Fiedler_build)"  ]; then \
+		cd $(DIR_Fiedler_build) && $(MAKE);  \
+	else \
+		mkdir $(DIR_Fiedler_build) && cd $(DIR_Fiedler_build) && \
+		cmake .. \
+                -DAmici_DIR=/parPE/deps/AMICI/build \
+                -DParPE_DIR=/parPE/build/ \
+                -DCMAKE_CXX_FLAGS="-I/parPE/include -I/parPE/build/src -I/usr/lib/x86_64-linux-gnu/openmpi/include -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_C_FLAGS="-L/usr/lib/x86_64-linux-gnu/hdf5/serial -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_EXE_LINKER_FLAGS="-L/usr/lib/x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/x86_64-linux-gnu/hdf5/serial -lhdf5 -lhdf5_hl -L/usr/lib/llvm-18/lib -lomp" \
+                -DCMAKE_PREFIX_PATH=$(CMAKE_PREFIX_PATH) \
+                -DCMAKE_INCLUDE_PATH=$(CMAKE_INCLUDE_PATH) \
+                -DCMAKE_LIBRARY_PATH=$(CMAKE_LIBRARY_PATH) \
+                -DOpenMP_C_LIB_NAMES="omp" -DOpenMP_CXX_LIB_NAMES="omp" \
+                -DOpenMP_omp_LIBRARY="/usr/lib/llvm-18/lib/libomp.so"\
+                -DCMAKE_C_COMPILER=/usr/bin/gcc \
+                -DCMAKE_CXX_COMPILER=/usr/bin/g++ && \
+		$(MAKE); \
+	fi
+	if [ -d "$(DIR_Laske_build)"  ]; then \
+		cd $(DIR_Laske_build) && $(MAKE);  \
+	else \
+		mkdir $(DIR_Laske_build) && cd $(DIR_Laske_build) && \
+		cmake .. \
+                -DAmici_DIR=/parPE/deps/AMICI/build \
+                -DParPE_DIR=/parPE/build/ \
+                -DCMAKE_CXX_FLAGS="-I/parPE/include -I/parPE/build/src -I/usr/lib/x86_64-linux-gnu/openmpi/include -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_C_FLAGS="-L/usr/lib/x86_64-linux-gnu/hdf5/serial -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_EXE_LINKER_FLAGS="-L/usr/lib/x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/x86_64-linux-gnu/hdf5/serial -lhdf5 -lhdf5_hl -L/usr/lib/llvm-18/lib -lomp" \
+                -DCMAKE_PREFIX_PATH=$(CMAKE_PREFIX_PATH) \
+                -DCMAKE_INCLUDE_PATH=$(CMAKE_INCLUDE_PATH) \
+                -DCMAKE_LIBRARY_PATH=$(CMAKE_LIBRARY_PATH) \
+                -DOpenMP_C_LIB_NAMES="omp" -DOpenMP_CXX_LIB_NAMES="omp" \
+                -DOpenMP_omp_LIBRARY="/usr/lib/llvm-18/lib/libomp.so"\
+                -DCMAKE_C_COMPILER=/usr/bin/gcc \
+                -DCMAKE_CXX_COMPILER=/usr/bin/g++ && \
+		$(MAKE); \
+	fi
+	if [ -d "$(DIR_Perelson_build)"  ]; then \
+		cd $(DIR_Perelson_build) && $(MAKE);  \
+	else \
+		mkdir $(DIR_Perelson_build) && cd $(DIR_Perelson_build) && \
+		cmake .. \
+                -DAmici_DIR=/parPE/deps/AMICI/build \
+                -DParPE_DIR=/parPE/build/ \
+                -DCMAKE_CXX_FLAGS="-I/parPE/include -I/parPE/build/src -I/usr/lib/x86_64-linux-gnu/openmpi/include -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_C_FLAGS="-L/usr/lib/x86_64-linux-gnu/hdf5/serial -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_EXE_LINKER_FLAGS="-L/usr/lib/x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/x86_64-linux-gnu/hdf5/serial -lhdf5 -lhdf5_hl -L/usr/lib/llvm-18/lib -lomp" \
+                -DCMAKE_PREFIX_PATH=$(CMAKE_PREFIX_PATH) \
+                -DCMAKE_INCLUDE_PATH=$(CMAKE_INCLUDE_PATH) \
+                -DCMAKE_LIBRARY_PATH=$(CMAKE_LIBRARY_PATH) \
+                -DOpenMP_C_LIB_NAMES="omp" -DOpenMP_CXX_LIB_NAMES="omp" \
+                -DOpenMP_omp_LIBRARY="/usr/lib/llvm-18/lib/libomp.so"\
+                -DCMAKE_C_COMPILER=/usr/bin/gcc \
+                -DCMAKE_CXX_COMPILER=/usr/bin/g++ && \
+		$(MAKE); \
+	fi
+	if [ -d "$(DIR_Okuonghae_build)"  ]; then \
+		cd $(DIR_Okuonghae_build) && $(MAKE);  \
+	else \
+		mkdir $(DIR_Okuonghae_build) && cd $(DIR_Okuonghae_build) && \
+		cmake .. \
+                -DAmici_DIR=/parPE/deps/AMICI/build \
+                -DParPE_DIR=/parPE/build/ \
+                -DCMAKE_CXX_FLAGS="-I/parPE/include -I/parPE/build/src -I/usr/lib/x86_64-linux-gnu/openmpi/include -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_C_FLAGS="-L/usr/lib/x86_64-linux-gnu/hdf5/serial -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_EXE_LINKER_FLAGS="-L/usr/lib/x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/x86_64-linux-gnu/hdf5/serial -lhdf5 -lhdf5_hl -L/usr/lib/llvm-18/lib -lomp" \
+                -DCMAKE_PREFIX_PATH=$(CMAKE_PREFIX_PATH) \
+                -DCMAKE_INCLUDE_PATH=$(CMAKE_INCLUDE_PATH) \
+                -DCMAKE_LIBRARY_PATH=$(CMAKE_LIBRARY_PATH) \
+                -DOpenMP_C_LIB_NAMES="omp" -DOpenMP_CXX_LIB_NAMES="omp" \
+                -DOpenMP_omp_LIBRARY="/usr/lib/llvm-18/lib/libomp.so"\
+                -DCMAKE_C_COMPILER=/usr/bin/gcc \
+                -DCMAKE_CXX_COMPILER=/usr/bin/g++ && \
+		$(MAKE); \
+	fi
+	if [ -d "$(DIR_Rahman_build)"  ]; then \
+		cd $(DIR_Rahman_build) && $(MAKE);  \
+	else \
+		mkdir $(DIR_Rahman_build) && cd $(DIR_Rahman_build) && \
+		cmake .. \
+                -DAmici_DIR=/parPE/deps/AMICI/build \
+                -DParPE_DIR=/parPE/build/ \
+                -DCMAKE_CXX_FLAGS="-I/parPE/include -I/parPE/build/src -I/usr/lib/x86_64-linux-gnu/openmpi/include -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_C_FLAGS="-L/usr/lib/x86_64-linux-gnu/hdf5/serial -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_EXE_LINKER_FLAGS="-L/usr/lib/x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/x86_64-linux-gnu/hdf5/serial -lhdf5 -lhdf5_hl -L/usr/lib/llvm-18/lib -lomp" \
+                -DCMAKE_PREFIX_PATH=$(CMAKE_PREFIX_PATH) \
+                -DCMAKE_INCLUDE_PATH=$(CMAKE_INCLUDE_PATH) \
+                -DCMAKE_LIBRARY_PATH=$(CMAKE_LIBRARY_PATH) \
+                -DOpenMP_C_LIB_NAMES="omp" -DOpenMP_CXX_LIB_NAMES="omp" \
+                -DOpenMP_omp_LIBRARY="/usr/lib/llvm-18/lib/libomp.so"\
+                -DCMAKE_C_COMPILER=/usr/bin/gcc \
+                -DCMAKE_CXX_COMPILER=/usr/bin/g++ && \
+		$(MAKE); \
+	fi
+	if [ -d "$(DIR_SalazarCavazos_build)"  ]; then \
+		cd $(DIR_SalazarCavazos_build) && $(MAKE);  \
+	else \
+		mkdir $(DIR_SalazarCavazos_build) && cd $(DIR_SalazarCavazos_build) && \
+		cmake .. \
+                -DAmici_DIR=/parPE/deps/AMICI/build \
+                -DParPE_DIR=/parPE/build/ \
+                -DCMAKE_CXX_FLAGS="-I/parPE/include -I/parPE/build/src -I/usr/lib/x86_64-linux-gnu/openmpi/include -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_C_FLAGS="-L/usr/lib/x86_64-linux-gnu/hdf5/serial -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_EXE_LINKER_FLAGS="-L/usr/lib/x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/x86_64-linux-gnu/hdf5/serial -lhdf5 -lhdf5_hl -L/usr/lib/llvm-18/lib -lomp" \
+                -DCMAKE_PREFIX_PATH=$(CMAKE_PREFIX_PATH) \
+                -DCMAKE_INCLUDE_PATH=$(CMAKE_INCLUDE_PATH) \
+                -DCMAKE_LIBRARY_PATH=$(CMAKE_LIBRARY_PATH) \
+                -DOpenMP_C_LIB_NAMES="omp" -DOpenMP_CXX_LIB_NAMES="omp" \
+                -DOpenMP_omp_LIBRARY="/usr/lib/llvm-18/lib/libomp.so"\
+                -DCMAKE_C_COMPILER=/usr/bin/gcc \
+                -DCMAKE_CXX_COMPILER=/usr/bin/g++ && \
+		$(MAKE); \
+	fi
+	if [ -d "$(DIR_Schwen_build)"  ]; then \
+		cd $(DIR_Schwen_build) && $(MAKE);  \
+	else \
+		mkdir $(DIR_Schwen_build) && cd $(DIR_Schwen_build) && \
+		cmake .. \
+                -DAmici_DIR=/parPE/deps/AMICI/build \
+                -DParPE_DIR=/parPE/build/ \
+                -DCMAKE_CXX_FLAGS="-I/parPE/include -I/parPE/build/src -I/usr/lib/x86_64-linux-gnu/openmpi/include -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_C_FLAGS="-L/usr/lib/x86_64-linux-gnu/hdf5/serial -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_EXE_LINKER_FLAGS="-L/usr/lib/x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/x86_64-linux-gnu/hdf5/serial -lhdf5 -lhdf5_hl -L/usr/lib/llvm-18/lib -lomp" \
+                -DCMAKE_PREFIX_PATH=$(CMAKE_PREFIX_PATH) \
+                -DCMAKE_INCLUDE_PATH=$(CMAKE_INCLUDE_PATH) \
+                -DCMAKE_LIBRARY_PATH=$(CMAKE_LIBRARY_PATH) \
+                -DOpenMP_C_LIB_NAMES="omp" -DOpenMP_CXX_LIB_NAMES="omp" \
+                -DOpenMP_omp_LIBRARY="/usr/lib/llvm-18/lib/libomp.so"\
+                -DCMAKE_C_COMPILER=/usr/bin/gcc \
+                -DCMAKE_CXX_COMPILER=/usr/bin/g++ && \
+		$(MAKE); \
+	fi
+	if [ -d "$(DIR_Zhao_build)"  ]; then \
+		cd $(DIR_Zhao_build) && $(MAKE);  \
+	else \
+		mkdir $(DIR_Zhao_build) && cd $(DIR_Zhao_build) && \
+		cmake .. \
+                -DAmici_DIR=/parPE/deps/AMICI/build \
+                -DParPE_DIR=/parPE/build/ \
+                -DCMAKE_CXX_FLAGS="-I/parPE/include -I/parPE/build/src -I/usr/lib/x86_64-linux-gnu/openmpi/include -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_C_FLAGS="-L/usr/lib/x86_64-linux-gnu/hdf5/serial -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_EXE_LINKER_FLAGS="-L/usr/lib/x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/x86_64-linux-gnu/hdf5/serial -lhdf5 -lhdf5_hl -L/usr/lib/llvm-18/lib -lomp" \
+                -DCMAKE_PREFIX_PATH=$(CMAKE_PREFIX_PATH) \
+                -DCMAKE_INCLUDE_PATH=$(CMAKE_INCLUDE_PATH) \
+                -DCMAKE_LIBRARY_PATH=$(CMAKE_LIBRARY_PATH) \
+                -DOpenMP_C_LIB_NAMES="omp" -DOpenMP_CXX_LIB_NAMES="omp" \
+                -DOpenMP_omp_LIBRARY="/usr/lib/llvm-18/lib/libomp.so"\
+                -DCMAKE_C_COMPILER=/usr/bin/gcc \
+                -DCMAKE_CXX_COMPILER=/usr/bin/g++ && \
+		$(MAKE); \
+	fi
+	if [ -d "$(DIR_Lucarelli_build)"  ]; then \
+		cd $(DIR_Lucarelli_build) && $(MAKE);  \
+	else \
+		mkdir $(DIR_Lucarelli_build) && cd $(DIR_Lucarelli_build) && \
+		cmake .. \
+                -DAmici_DIR=/parPE/deps/AMICI/build \
+                -DParPE_DIR=/parPE/build/ \
+                -DCMAKE_CXX_FLAGS="-I/parPE/include -I/parPE/build/src -I/usr/lib/x86_64-linux-gnu/openmpi/include -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_C_FLAGS="-L/usr/lib/x86_64-linux-gnu/hdf5/serial -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_EXE_LINKER_FLAGS="-L/usr/lib/x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/x86_64-linux-gnu/hdf5/serial -lhdf5 -lhdf5_hl -L/usr/lib/llvm-18/lib -lomp" \
+                -DCMAKE_PREFIX_PATH=$(CMAKE_PREFIX_PATH) \
+                -DCMAKE_INCLUDE_PATH=$(CMAKE_INCLUDE_PATH) \
+                -DCMAKE_LIBRARY_PATH=$(CMAKE_LIBRARY_PATH) \
+                -DOpenMP_C_LIB_NAMES="omp" -DOpenMP_CXX_LIB_NAMES="omp" \
+                -DOpenMP_omp_LIBRARY="/usr/lib/llvm-18/lib/libomp.so"\
+                -DCMAKE_C_COMPILER=/usr/bin/gcc \
+                -DCMAKE_CXX_COMPILER=/usr/bin/g++ && \
+		$(MAKE); \
+	fi
+	if [ -d "$(DIR_Oliveira_build)"  ]; then \
+		cd $(DIR_Oliveira_build) && $(MAKE);  \
+	else \
+		mkdir $(DIR_Oliveira_build) && cd $(DIR_Oliveira_build) && \
+		cmake .. \
+                -DAmici_DIR=/parPE/deps/AMICI/build \
+                -DParPE_DIR=/parPE/build/ \
+                -DCMAKE_CXX_FLAGS="-I/parPE/include -I/parPE/build/src -I/usr/lib/x86_64-linux-gnu/openmpi/include -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_C_FLAGS="-L/usr/lib/x86_64-linux-gnu/hdf5/serial -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_EXE_LINKER_FLAGS="-L/usr/lib/x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/x86_64-linux-gnu/hdf5/serial -lhdf5 -lhdf5_hl -L/usr/lib/llvm-18/lib -lomp" \
+                -DCMAKE_PREFIX_PATH=$(CMAKE_PREFIX_PATH) \
+                -DCMAKE_INCLUDE_PATH=$(CMAKE_INCLUDE_PATH) \
+                -DCMAKE_LIBRARY_PATH=$(CMAKE_LIBRARY_PATH) \
+                -DOpenMP_C_LIB_NAMES="omp" -DOpenMP_CXX_LIB_NAMES="omp" \
+                -DOpenMP_omp_LIBRARY="/usr/lib/llvm-18/lib/libomp.so"\
+                -DCMAKE_C_COMPILER=/usr/bin/gcc \
+                -DCMAKE_CXX_COMPILER=/usr/bin/g++ && \
+		$(MAKE); \
+	fi
+	if [ -d "$(DIR_Raimundez_build)"  ]; then \
+		cd $(DIR_Raimundez_build) && $(MAKE);  \
+	else \
+		mkdir $(DIR_Raimundez_build) && cd $(DIR_Raimundez_build) && \
+		cmake .. \
+                -DAmici_DIR=/parPE/deps/AMICI/build \
+                -DParPE_DIR=/parPE/build/ \
+                -DCMAKE_CXX_FLAGS="-I/parPE/include -I/parPE/build/src -I/usr/lib/x86_64-linux-gnu/openmpi/include -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_C_FLAGS="-L/usr/lib/x86_64-linux-gnu/hdf5/serial -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_EXE_LINKER_FLAGS="-L/usr/lib/x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/x86_64-linux-gnu/hdf5/serial -lhdf5 -lhdf5_hl -L/usr/lib/llvm-18/lib -lomp" \
+                -DCMAKE_PREFIX_PATH=$(CMAKE_PREFIX_PATH) \
+                -DCMAKE_INCLUDE_PATH=$(CMAKE_INCLUDE_PATH) \
+                -DCMAKE_LIBRARY_PATH=$(CMAKE_LIBRARY_PATH) \
+                -DOpenMP_C_LIB_NAMES="omp" -DOpenMP_CXX_LIB_NAMES="omp" \
+                -DOpenMP_omp_LIBRARY="/usr/lib/llvm-18/lib/libomp.so"\
+                -DCMAKE_C_COMPILER=/usr/bin/gcc \
+                -DCMAKE_CXX_COMPILER=/usr/bin/g++ && \
+		$(MAKE); \
+	fi
+	if [ -d "$(DIR_Isensee_build)"  ]; then \
+		cd $(DIR_Isensee_build) && $(MAKE);  \
+	else \
+		mkdir $(DIR_Isensee_build) && cd $(DIR_Isensee_build) && \
+		cmake .. \
+                -DAmici_DIR=/parPE/deps/AMICI/build \
+                -DParPE_DIR=/parPE/build/ \
+                -DCMAKE_CXX_FLAGS="-I/parPE/include -I/parPE/build/src -I/usr/lib/x86_64-linux-gnu/openmpi/include -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_C_FLAGS="-L/usr/lib/x86_64-linux-gnu/hdf5/serial -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_EXE_LINKER_FLAGS="-L/usr/lib/x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/x86_64-linux-gnu/hdf5/serial -lhdf5 -lhdf5_hl -L/usr/lib/llvm-18/lib -lomp" \
+                -DCMAKE_PREFIX_PATH=$(CMAKE_PREFIX_PATH) \
+                -DCMAKE_INCLUDE_PATH=$(CMAKE_INCLUDE_PATH) \
+                -DCMAKE_LIBRARY_PATH=$(CMAKE_LIBRARY_PATH) \
+                -DOpenMP_C_LIB_NAMES="omp" -DOpenMP_CXX_LIB_NAMES="omp" \
+                -DOpenMP_omp_LIBRARY="/usr/lib/llvm-18/lib/libomp.so"\
+                -DCMAKE_C_COMPILER=/usr/bin/gcc \
+                -DCMAKE_CXX_COMPILER=/usr/bin/g++ && \
+		$(MAKE); \
+	fi
+	if [ -d "$(DIR_Brannmark_build)"  ]; then \
+		cd $(DIR_Brannmark_build) && $(MAKE);  \
+	else \
+		mkdir $(DIR_Brannmark_build) && cd $(DIR_Brannmark_build) && \
+		cmake .. \
+                -DAmici_DIR=/parPE/deps/AMICI/build \
+                -DParPE_DIR=/parPE/build/ \
+                -DCMAKE_CXX_FLAGS="-I/parPE/include -I/parPE/build/src -I/usr/lib/x86_64-linux-gnu/openmpi/include -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_C_FLAGS="-L/usr/lib/x86_64-linux-gnu/hdf5/serial -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_EXE_LINKER_FLAGS="-L/usr/lib/x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/x86_64-linux-gnu/hdf5/serial -lhdf5 -lhdf5_hl -L/usr/lib/llvm-18/lib -lomp" \
+                -DCMAKE_PREFIX_PATH=$(CMAKE_PREFIX_PATH) \
+                -DCMAKE_INCLUDE_PATH=$(CMAKE_INCLUDE_PATH) \
+                -DCMAKE_LIBRARY_PATH=$(CMAKE_LIBRARY_PATH) \
+                -DOpenMP_C_LIB_NAMES="omp" -DOpenMP_CXX_LIB_NAMES="omp" \
+                -DOpenMP_omp_LIBRARY="/usr/lib/llvm-18/lib/libomp.so"\
+                -DCMAKE_C_COMPILER=/usr/bin/gcc \
+                -DCMAKE_CXX_COMPILER=/usr/bin/g++ && \
+		$(MAKE); \
+	fi
+	if [ -d "$(DIR_Armistead_build)"  ]; then \
+		cd $(DIR_Armistead_build) && $(MAKE);  \
+	else \
+		mkdir $(DIR_Armistead_build) && cd $(DIR_Armistead_build) && \
+		cmake .. \
+                -DAmici_DIR=/parPE/deps/AMICI/build \
+                -DParPE_DIR=/parPE/build/ \
+                -DCMAKE_CXX_FLAGS="-I/parPE/include -I/parPE/build/src -I/usr/lib/x86_64-linux-gnu/openmpi/include -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_C_FLAGS="-L/usr/lib/x86_64-linux-gnu/hdf5/serial -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_EXE_LINKER_FLAGS="-L/usr/lib/x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/x86_64-linux-gnu/hdf5/serial -lhdf5 -lhdf5_hl -L/usr/lib/llvm-18/lib -lomp" \
+                -DCMAKE_PREFIX_PATH=$(CMAKE_PREFIX_PATH) \
+                -DCMAKE_INCLUDE_PATH=$(CMAKE_INCLUDE_PATH) \
+                -DCMAKE_LIBRARY_PATH=$(CMAKE_LIBRARY_PATH) \
+                -DOpenMP_C_LIB_NAMES="omp" -DOpenMP_CXX_LIB_NAMES="omp" \
+                -DOpenMP_omp_LIBRARY="/usr/lib/llvm-18/lib/libomp.so"\
+                -DCMAKE_C_COMPILER=/usr/bin/gcc \
+                -DCMAKE_CXX_COMPILER=/usr/bin/g++ && \
+		$(MAKE); \
+	fi
+	if [ -d "$(DIR_Raia_build)"  ]; then \
+		cd $(DIR_Raia_build) && $(MAKE);  \
+	else \
+		mkdir $(DIR_Raia_build) && cd $(DIR_Raia_build) && \
+		cmake .. \
+                -DAmici_DIR=/parPE/deps/AMICI/build \
+                -DParPE_DIR=/parPE/build/ \
+                -DCMAKE_CXX_FLAGS="-I/parPE/include -I/parPE/build/src -I/usr/lib/x86_64-linux-gnu/openmpi/include -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_C_FLAGS="-L/usr/lib/x86_64-linux-gnu/hdf5/serial -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_EXE_LINKER_FLAGS="-L/usr/lib/x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/x86_64-linux-gnu/hdf5/serial -lhdf5 -lhdf5_hl -L/usr/lib/llvm-18/lib -lomp" \
+                -DCMAKE_PREFIX_PATH=$(CMAKE_PREFIX_PATH) \
+                -DCMAKE_INCLUDE_PATH=$(CMAKE_INCLUDE_PATH) \
+                -DCMAKE_LIBRARY_PATH=$(CMAKE_LIBRARY_PATH) \
+                -DOpenMP_C_LIB_NAMES="omp" -DOpenMP_CXX_LIB_NAMES="omp" \
+                -DOpenMP_omp_LIBRARY="/usr/lib/llvm-18/lib/libomp.so"\
+                -DCMAKE_C_COMPILER=/usr/bin/gcc \
+                -DCMAKE_CXX_COMPILER=/usr/bin/g++ && \
+		$(MAKE); \
+	fi
+	if [ -d "$(DIR_Smith_build)"  ]; then \
+		cd $(DIR_Smith_build) && $(MAKE);  \
+	else \
+		mkdir $(DIR_Smith_build) && cd $(DIR_Smith_build) && \
+		cmake .. \
+                -DAmici_DIR=/parPE/deps/AMICI/build \
+                -DParPE_DIR=/parPE/build/ \
+                -DCMAKE_CXX_FLAGS="-I/parPE/include -I/parPE/build/src -I/usr/lib/x86_64-linux-gnu/openmpi/include -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_C_FLAGS="-L/usr/lib/x86_64-linux-gnu/hdf5/serial -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+                -DCMAKE_EXE_LINKER_FLAGS="-L/usr/lib/x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/x86_64-linux-gnu/hdf5/serial -lhdf5 -lhdf5_hl -L/usr/lib/llvm-18/lib -lomp" \
+                -DCMAKE_PREFIX_PATH=$(CMAKE_PREFIX_PATH) \
+                -DCMAKE_INCLUDE_PATH=$(CMAKE_INCLUDE_PATH) \
+                -DCMAKE_LIBRARY_PATH=$(CMAKE_LIBRARY_PATH) \
+                -DOpenMP_C_LIB_NAMES="omp" -DOpenMP_CXX_LIB_NAMES="omp" \
+                -DOpenMP_omp_LIBRARY="/usr/lib/llvm-18/lib/libomp.so"\
+                -DCMAKE_C_COMPILER=/usr/bin/gcc \
+                -DCMAKE_CXX_COMPILER=/usr/bin/g++ && \
+		$(MAKE); \
+	fi
+	if [ -d "$(DIR_Beer_build)"  ]; then \
+		cd $(DIR_Beer_build) && $(MAKE);  \
+	else \
+		mkdir $(DIR_Beer_build) && cd $(DIR_Beer_build) && \
+		cmake .. \
+			-DAmici_DIR=/parPE/deps/AMICI/build \
+			-DParPE_DIR=/parPE/build/ \
+			-DCMAKE_CXX_FLAGS="-I/parPE/include -I/parPE/build/src -I/usr/lib/x86_64-linux-gnu/openmpi/include -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+			-DCMAKE_C_FLAGS="-L/usr/lib/x86_64-linux-gnu/hdf5/serial -fopenmp -O3 -I/usr/lib/llvm-18/include" \
+			-DCMAKE_EXE_LINKER_FLAGS="-L/usr/lib/x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/x86_64-linux-gnu/hdf5/serial -lhdf5 -lhdf5_hl -L/usr/lib/llvm-18/lib -lomp" \
+			-DCMAKE_PREFIX_PATH=$(CMAKE_PREFIX_PATH) \
+			-DCMAKE_INCLUDE_PATH=$(CMAKE_INCLUDE_PATH) \
+			-DCMAKE_LIBRARY_PATH=$(CMAKE_LIBRARY_PATH) \
+			-DOpenMP_C_LIB_NAMES="omp" -DOpenMP_CXX_LIB_NAMES="omp" \
+			-DOpenMP_omp_LIBRARY="/usr/lib/llvm-18/lib/libomp.so"\
+			-DCMAKE_C_COMPILER=/usr/bin/gcc \
+			-DCMAKE_CXX_COMPILER=/usr/bin/g++ && \
+		$(MAKE); \
+    fi
+#libAMIGO.a :  $(OBJAMIGO)  
+#	$(CC) $^ -shared -o $(AMIGO_PATH)/lib/libAMIGO.so 
+# $(AR) r $(AMIGO_PATH)/lib/libAMIGO.a $^ $(OBJN2SOLFILES)
+%.o: %.c
+	$(CC)  -c $< -o $@  $(INC) $(INCPARPE) $(CLIBS) $(CFLAGS) $(CPARALLEL) -fPIC $(C_INCLUDES1) $(C_FLAGS1) 
+
+%.o: %.f90
+	$(FC) -c $< -o $@ $(LIBS) $(INC) $(FLIBS) $(FFLAGS) $(FPARALLEL)
+	@mv $(BUILDDIR)/*.mod $(BUILDDIR)/include/method_module_fortran/
+	
+$(PROG) : $(OBJFILES)
+        #$(CPP) -o $(PROG) $(MISQP) $(INC) $(INCPARPE) $(BLAS) $(OBJN2SOL) $(OBJB6FILES) $(OBJFILES) $(OBJFORTRANFILES)  $(LIBS) $(CLIBS) $(FLIBS) $(CPARALLEL) $(LIBPARPE) $(CPPFLAGS) $(CFLAGS) $(LIBS1) -L/usr/lib/x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/x86_64-linux-gnu/hdf5/serial -lhdf5 -lhdf5_hl -L/usr/lib/llvm-18/lib -lomp
+	$(CC) -o $(PROG)$(TERM_PE) -frtti $(INC) $(INCPARPE) $(BLAS) $(OBJN2SOL) $(OBJB6FILES) $(OBJFILES) $(OBJFORTRANFILES)  $(LIBS)  $(CLIBS) $(FLIBS) $(CPARALLEL)  -lm $(LIBPARPE) $(CPPFLAGS) $(CFLAGS) -lstdc++ $(LIBLINKER) $(CPARALLEL) 
+
+
+clean :
+	rm -f $(PROG)* $(OBJFILES) $(DEPFILES)
+	rm -f $(OBJFORTRANFILES) $(DEPFORTRANFILES) $(MODFORTRANFILES)
+
+cleanobj:
+	rm -f $(OBJFORTRANFILES) $(DEPFORTRANFILES) $(MODFORTRANFILES)
+
+veryclean :
+	rm -f $(PROG)* $(OBJFILES) $(DEPFILES)
+	rm -f $(OBJFORTRANFILES) $(DEPFORTRANFILES) $(MODFORTRANFILES)
+	rm -f $(BUILDDIR)/include/method_module_fortran/*.mod
+	cd $(BUILDDIR)/benchmarks/systemsBiology/BioPredyn/B6 && $(MAKE) clean
+	cd $(BUILDDIR)/benchmarks/systemsBiology/BioPredyn/B6 && $(MAKE) veryclean
+	cd $(BUILDDIR)/src/method_module_fortran/eSS/localsolvers/nl2sol/src_nl2sol && $(MAKE) clean
+	cd $(BUILDDIR)/lib/BLAS && make clean
+	rm -Rf $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Boehm_JProteomeRes2014/build
+	rm -Rf $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Borghans_BiophysChem1997/build
+	rm -Rf $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Crauste_CellSystems2017/build
+	rm -Rf $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Elowitz_Nature2000/build
+	rm -Rf $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Fujita_SciSignal2010/build
+	 rm -Rf $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Sneyd_PNAS2002/build
+	 rm -Rf $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Weber_BMC2015/build
+	 rm -Rf $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Zheng_PNAS2012/build
+#	 rm -Rf $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Alkan_SciSignal2018/build
+#	 rm -Rf $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Bachmann_MSB2011/build
+	 rm -Rf $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Blasi_CellSystems2016/build
+	 rm -Rf $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Bruno_JExpBot2016/build
+	 rm -Rf $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Chen_MSB2009/build
+	 rm -Rf $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Giordano_Nature2020/build
+	 rm -Rf $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Chen_MSB2009/build
+	 rm -Rf $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Beer_MolBioSystems2014/build
+	 rm -Rf $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Bertozzi_PNAS2020/build
+	 rm -Rf $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Giordano_Nature2020/build
+	 rm -Rf $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Laske_PLOSComputBiol2019/build
+	 rm -Rf $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Perelson_Science1996/build
+	 rm -Rf $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Okuonghae_ChaosSolitonsFractals2020/build
+	 rm -Rf $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Rahman_MBS2016/build
+	 rm -Rf $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_SalazarCavazos_MBoC2020/build
+	 rm -Rf $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Schwen_PONE2014/build
+	 rm -Rf $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Zhao_QuantBiol2020/build
+	 rm -Rf $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Lucarelli_CellSystems2018/build
+	 rm -Rf $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Oliveira_NatCommun2021/build
+	 rm -Rf $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Raimundez_PCB2020/build
+	 rm -Rf $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Isensee_JCB2018/build
+	 rm -Rf $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Fiedler_BMCSystBiol2016/build
+	 rm -Rf $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Brannmark_JBC2010/build
+	 rm -Rf $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Armistead_CellDeathDis2024/build
+	 rm -Rf $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Raia_CancerResearch2011/build
+	 rm -Rf $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Smith_BMCSystBiol2013/build

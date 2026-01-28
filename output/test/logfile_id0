@@ -1,0 +1,66 @@
+	ID[0] - MASTER - New solution received 367.403215 from 1 processor compares with current best 179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000000 --- CURRENT TIME 0.374013 s
+ID[0] - MASTER ACCEPT CANDIDATE FROM 1 - fx candidate 367.403215 - 0.002252 seconds spent in the last put --- CURRENT TIME 0.378801 s
+	ID[0] - MASTER - New solution received 295.969408 from 2 processor compares with current best 367.403215 --- CURRENT TIME 0.385572 s
+	ID[0] - COMPARATION SOLUTIONS - compared candidate value 295.969408 with best know value 367.403215 ---> improving 19.442891 % (min 0.010000%) -- CURRENT TIME 0.386705 s
+ID[0] - MASTER ACCEPT CANDIDATE FROM 2 - fx candidate 295.969408 - 0.000870 seconds spent in the last put --- CURRENT TIME 0.389991 s
+	ID[0] - MASTER - New solution received 280.011756 from 8 processor compares with current best 295.969408 --- CURRENT TIME 0.426681 s
+	ID[0] - COMPARATION SOLUTIONS - compared candidate value 280.011756 with best know value 295.969408 ---> improving 5.391656 % (min 0.010000%) -- CURRENT TIME 0.431794 s
+ID[0] - MASTER ACCEPT CANDIDATE FROM 8 - fx candidate 280.011756 - 0.001414 seconds spent in the last put --- CURRENT TIME 0.434518 s
+	ID[0] - MASTER - New solution received 252.756080 from 9 processor compares with current best 280.011756 --- CURRENT TIME 0.438706 s
+	ID[0] - COMPARATION SOLUTIONS - compared candidate value 252.756080 with best know value 280.011756 ---> improving 9.733761 % (min 0.010000%) -- CURRENT TIME 0.439488 s
+ID[0] - MASTER ACCEPT CANDIDATE FROM 9 - fx candidate 252.756080 - 0.000521 seconds spent in the last put --- CURRENT TIME 0.440354 s
+	ID[0] - MASTER - New solution received 250.620719 from 9 processor compares with current best 252.756080 --- CURRENT TIME 0.569073 s
+	ID[0] - COMPARATION SOLUTIONS - compared candidate value 250.620719 with best know value 252.756080 ---> improving 0.844831 % (min 0.010000%) -- CURRENT TIME 0.570977 s
+ID[0] - MASTER ACCEPT CANDIDATE FROM 9 - fx candidate 250.620719 - 0.001582 seconds spent in the last put --- CURRENT TIME 0.574453 s
+	ID[0] - MASTER - New solution received 233.863039 from 2 processor compares with current best 250.620719 --- CURRENT TIME 0.636048 s
+	ID[0] - COMPARATION SOLUTIONS - compared candidate value 233.863039 with best know value 250.620719 ---> improving 6.686470 % (min 0.010000%) -- CURRENT TIME 0.637225 s
+ID[0] - MASTER ACCEPT CANDIDATE FROM 2 - fx candidate 233.863039 - 0.001248 seconds spent in the last put --- CURRENT TIME 0.639248 s
+	ID[0] - MASTER - New solution received 232.645280 from 2 processor compares with current best 233.863039 --- CURRENT TIME 0.814283 s
+	ID[0] - COMPARATION SOLUTIONS - compared candidate value 232.645280 with best know value 233.863039 ---> improving 0.520714 % (min 0.010000%) -- CURRENT TIME 0.828504 s
+ID[0] - MASTER ACCEPT CANDIDATE FROM 2 - fx candidate 232.645280 - 0.000929 seconds spent in the last put --- CURRENT TIME 0.834538 s
+	ID[0] - MASTER - New solution received 228.581733 from 4 processor compares with current best 232.645280 --- CURRENT TIME 0.843095 s
+	ID[0] - COMPARATION SOLUTIONS - compared candidate value 228.581733 with best know value 232.645280 ---> improving 1.746671 % (min 0.010000%) -- CURRENT TIME 0.844212 s
+ID[0] - MASTER ACCEPT CANDIDATE FROM 4 - fx candidate 228.581733 - 0.000447 seconds spent in the last put --- CURRENT TIME 0.845605 s
+	ID[0] - MASTER - New solution received 226.094399 from 1 processor compares with current best 228.581733 --- CURRENT TIME 0.926685 s
+	ID[0] - MASTER - New solution received 227.930737 from 2 processor compares with current best 226.094399 --- CURRENT TIME 0.928498 s
+	ID[0] - COMPARATION SOLUTIONS - compared candidate value 226.094399 with best know value 228.581733 ---> improving 1.088160 % (min 0.010000%) -- CURRENT TIME 0.928929 s
+ID[0] - MASTER ACCEPT CANDIDATE FROM 1 - fx candidate 226.094399 - 0.000635 seconds spent in the last put --- CURRENT TIME 0.929930 s
+	ID[0] - MASTER - New solution received 215.581254 from 9 processor compares with current best 226.094399 --- CURRENT TIME 1.026677 s
+	ID[0] - COMPARATION SOLUTIONS - compared candidate value 215.581254 with best know value 226.094399 ---> improving 4.649892 % (min 0.010000%) -- CURRENT TIME 1.028052 s
+ID[0] - MASTER ACCEPT CANDIDATE FROM 9 - fx candidate 215.581254 - 0.000436 seconds spent in the last put --- CURRENT TIME 1.034578 s
+	ID[0] - MASTER - New solution received 213.819316 from 9 processor compares with current best 215.581254 --- CURRENT TIME 1.226670 s
+	ID[0] - COMPARATION SOLUTIONS - compared candidate value 213.819316 with best know value 215.581254 ---> improving 0.817297 % (min 0.010000%) -- CURRENT TIME 1.228055 s
+ID[0] - MASTER ACCEPT CANDIDATE FROM 9 - fx candidate 213.819316 - 0.005622 seconds spent in the last put --- CURRENT TIME 1.234180 s
+	ID[0] - MASTER - New solution received 208.155404 from 9 processor compares with current best 213.819316 --- CURRENT TIME 1.326686 s
+	ID[0] - COMPARATION SOLUTIONS - compared candidate value 208.155404 with best know value 213.819316 ---> improving 2.648924 % (min 0.010000%) -- CURRENT TIME 1.328206 s
+ID[0] - MASTER ACCEPT CANDIDATE FROM 9 - fx candidate 208.155404 - 0.004949 seconds spent in the last put --- CURRENT TIME 1.333706 s
+	ID[0] - MASTER - New solution received 198.614797 from 1 processor compares with current best 208.155404 --- CURRENT TIME 1.428833 s
+	ID[0] - MASTER - New solution received 207.759828 from 9 processor compares with current best 198.614797 --- CURRENT TIME 1.431422 s
+	ID[0] - COMPARATION SOLUTIONS - compared candidate value 198.614797 with best know value 208.155404 ---> improving 4.583406 % (min 0.010000%) -- CURRENT TIME 1.432509 s
+ID[0] - MASTER ACCEPT CANDIDATE FROM 1 - fx candidate 198.614797 - 0.001247 seconds spent in the last put --- CURRENT TIME 1.434654 s
+	ID[0] - MASTER - New solution received 188.491676 from 1 processor compares with current best 198.614797 --- CURRENT TIME 1.527731 s
+	ID[0] - COMPARATION SOLUTIONS - compared candidate value 188.491676 with best know value 198.614797 ---> improving 5.096861 % (min 0.010000%) -- CURRENT TIME 1.529142 s
+ID[0] - MASTER ACCEPT CANDIDATE FROM 1 - fx candidate 188.491676 - 0.000547 seconds spent in the last put --- CURRENT TIME 1.536761 s
+	ID[0] - MASTER - New solution received 188.432752 from 1 processor compares with current best 188.491676 --- CURRENT TIME 1.727747 s
+	ID[0] - COMPARATION SOLUTIONS - compared candidate value 188.432752 with best know value 188.491676 ---> improving 0.031261 % (min 0.010000%) -- CURRENT TIME 1.729200 s
+ID[0] - MASTER ACCEPT CANDIDATE FROM 1 - fx candidate 188.432752 - 0.000519 seconds spent in the last put --- CURRENT TIME 1.730737 s
+	ID[0] - MASTER - New solution received 187.696205 from 1 processor compares with current best 188.432752 --- CURRENT TIME 1.826676 s
+	ID[0] - MASTER - New solution received 187.208229 from 2 processor compares with current best 187.696205 --- CURRENT TIME 1.828819 s
+	ID[0] - COMPARATION SOLUTIONS - compared candidate value 187.208229 with best know value 188.432752 ---> improving 0.649846 % (min 0.010000%) -- CURRENT TIME 1.830044 s
+ID[0] - MASTER ACCEPT CANDIDATE FROM 2 - fx candidate 187.208229 - 0.002156 seconds spent in the last put --- CURRENT TIME 1.833945 s
+	ID[0] - MASTER - New solution received 186.084265 from 1 processor compares with current best 187.208229 --- CURRENT TIME 1.934463 s
+	ID[0] - COMPARATION SOLUTIONS - compared candidate value 186.084265 with best know value 187.208229 ---> improving 0.600382 % (min 0.010000%) -- CURRENT TIME 1.936353 s
+ID[0] - MASTER ACCEPT CANDIDATE FROM 1 - fx candidate 186.084265 - 0.000556 seconds spent in the last put --- CURRENT TIME 1.938362 s
+	ID[0] - MASTER - New solution received 179.099380 from 1 processor compares with current best 186.084265 --- CURRENT TIME 2.077541 s
+	ID[0] - COMPARATION SOLUTIONS - compared candidate value 179.099380 with best know value 186.084265 ---> improving 3.753614 % (min 0.010000%) -- CURRENT TIME 2.080382 s
+ID[0] - MASTER ACCEPT CANDIDATE FROM 1 - fx candidate 179.099380 - 0.001167 seconds spent in the last put --- CURRENT TIME 2.083097 s
+	ID[0] - MASTER - New solution received 173.012572 from 1 processor compares with current best 179.099380 --- CURRENT TIME 2.163641 s
+	ID[0] - COMPARATION SOLUTIONS - compared candidate value 173.012572 with best know value 179.099380 ---> improving 3.398564 % (min 0.010000%) -- CURRENT TIME 2.166113 s
+ID[0] - MASTER ACCEPT CANDIDATE FROM 1 - fx candidate 173.012572 - 0.001961 seconds spent in the last put --- CURRENT TIME 2.170489 s
+	ID[0] - MASTER - New solution received 173.121507 from 9 processor compares with current best 173.012572 --- CURRENT TIME 2.173937 s
+	ID[0] - MASTER - New solution received 171.474841 from 1 processor compares with current best 173.012572 --- CURRENT TIME 2.280959 s
+	ID[0] - COMPARATION SOLUTIONS - compared candidate value 171.474841 with best know value 173.012572 ---> improving 0.888797 % (min 0.010000%) -- CURRENT TIME 2.282497 s
+ID[0] - MASTER ACCEPT CANDIDATE FROM 1 - fx candidate 171.474841 - 0.000670 seconds spent in the last put --- CURRENT TIME 2.284606 s
+	ID[0] - MASTER - New solution received 170.588956 from 9 processor compares with current best 171.474841 --- CURRENT TIME 2.364769 s
+	ID[0] - COMPARATION SOLUTIONS - compared candidate value 170.588956 with best know value 171.474841 ---> improving 0.516627 % (min 0.010000%) -- CURRENT TIME 2.366526 s
+ID[0] - MASTER ACCEPT CANDIDATE FROM 9 - fx candidate 170.588956 - 0.003190 seconds spent in the last put --- CURRENT TIME 2.371297 s

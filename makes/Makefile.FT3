@@ -2,10 +2,10 @@ BUILDDIR=.
 LIBRARY=$(BUILDDIR)/lib
 
 # CONFIGURE THIS PATHS
-PATHPARPE=/mnt/lustre/scratch/nlsas/home/csic/gim/dro/parPE-0.7.0
+PATHPARPE=/mnt/lustre/scratch/nlsas/home/csic/gim/dro/parPE
 PATHHDF5=/opt/cesga/2020/software/Compiler/gcccore/system/hdf5/1.12.1
 PATHBOOST=/opt/cesga/2020/software/Compiler/gcccore/system/boost/1.83.0/lib64
-PATHIPOPT=/mnt/lustre/scratch/nlsas/home/csic/gim/dro/parPE-0.7.0/ThirdParty/Ipopt-releases-3.13.3/install
+PATHIPOPT=/mnt/lustre/scratch/nlsas/home/csic/gim/dro/parPE/ThirdParty/Ipopt-releases-3.13.3/install
 
 #############################################################################
 ## PARALLEL GCC/GFORTRAN - OPENMP
@@ -90,6 +90,20 @@ LIBPARPE_LOCAL=$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Zheng_PNAS2012/
 TERM_PE=_Zheng
 endif
 DIR_Zheng_build := $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Zheng_PNAS2012/build
+
+#ifeq ($(PARPE),Alkan)
+#INCPARPE_LOCAL=-I$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Alkan_SciSignal2018/model -DAlkan
+#LIBPARPE_LOCAL=$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Alkan_SciSignal2018/build/model/libAlkan_SciSignal2018.a -DAlkan
+#TERM_PE=_Alkan
+#endif
+#DIR_Alkan_build := $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Alkan_SciSignal2018/build
+
+#ifeq ($(PARPE),Bachmann)
+#INCPARPE_LOCAL=-I$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Bachmann_MSB2011/model -DBachmann
+#LIBPARPE_LOCAL=$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Bachmann_MSB2011/build/model/libBachmann_MSB2011.a -DBachmann
+#TERM_PE=_Bachmann
+#endif
+#DIR_Bachmann_build := $(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Bachmann_MSB2011/build
 
 ifeq ($(PARPE),Blasi)
 INCPARPE_LOCAL=-I$(BUILDDIR)/benchmarks/systemsBiology/parPE/parpe_Blasi_CellSystems2016/model -DBlasi

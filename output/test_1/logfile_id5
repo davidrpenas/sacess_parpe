@@ -1,0 +1,821 @@
+
++++ID[5] --- INIT ITERATION 1 - CURRENT TIME: 0.229633 s
+ID[5] - Iteration: 1 NFunEvals: 281 Bestf: 296.432421 CURRENT TIME: 0.563443 s
+	ID[5] - REFSET FVAL - Content of the Refset in the end of iteration 1 - CURRENT TIME 0.576935 s: 
+		 336.799783 		 472.932533 		 443.511543 		 296.432421 		 311.018779 		 344.116069 		 491.465129 		 423.093775 		 309.419409 		 344.176843 
+		 413.047812 		 425.963777 		 408.268958 
+	ID[5] - INDEX CHANGE COUNTER - end iteration 1 - CURRENT TIME 0.576935 s: 
+		 0 		 0 		 0 		 0 		 0 		 0 		 0 		 0 		 0 		 0 
+		 0 		 0 		 0 
+	ID[5] - COOPERATIVE FLAG - Content of the cooperative flag iter 1 - CURRENT TIME 0.576935 s: 
+		 0 		 0 		 0 		 0 		 0 		 0 		 0 		 0 		 0 		 0 
+		 0 		 0 		 0 
+
++++ID[5] - END ITERATION
+
+
+
++++ID[5] --- INIT ITERATION 2 - CURRENT TIME: 0.580246 s
+	ID[5] - RECEPTION -   Candidate_from_Master 251.288826 is received --- CURRENT TIME 0.581149 sec
+	ID[5] - COMPARATION SOLUTIONS IN RECEPTION - compared candidate value 251.288826 with fbest value 296.432421 ---> improving 15.228967 % (min 0.010000%) -- CURRENT TIME 0.582815 s
+	ID[5] - RECEPTION - ACCEPTED -  received data is introduced in refset - 251.288826 - in position 13 --- CURRENT TIME 0.585582 seconds
+ID[5] - Iteration: 2 NFunEvals: 461 Bestf: 251.288826 CURRENT TIME: 1.035115 s
+	ID[5] - REFSET FVAL - Content of the Refset in the end of iteration 2 - CURRENT TIME 1.039815 s: 
+		 251.288826 		 267.744839 		 258.028484 		 263.833033 		 275.813377 		 271.722485 		 313.219215 		 275.819439 		 257.221355 		 269.220441 
+		 280.878454 		 280.985383 		 359.302794 
+	ID[5] - INDEX CHANGE COUNTER - end iteration 2 - CURRENT TIME 1.039815 s: 
+		 1 		 0 		 0 		 0 		 0 		 0 		 0 		 0 		 0 		 0 
+		 0 		 0 		 0 
+	ID[5] - COOPERATIVE FLAG - Content of the cooperative flag iter 2 - CURRENT TIME 1.039815 s: 
+		 1 		 0 		 0 		 0 		 0 		 0 		 0 		 0 		 0 		 0 
+		 0 		 0 		 0 
+
++++ID[5] - END ITERATION
+
+
+
++++ID[5] --- INIT ITERATION 3 - CURRENT TIME: 1.045617 s
+	ID[5] - RECEPTION -   Candidate_from_Master 215.511181 is received --- CURRENT TIME 1.046364 sec
+	ID[5] - COMPARATION SOLUTIONS IN RECEPTION - compared candidate value 215.511181 with fbest value 251.288826 ---> improving 14.237659 % (min 0.010000%) -- CURRENT TIME 1.047590 s
+	ID[5] - RECEPTION - ACCEPTED -  received data is introduced in refset - 215.511181 - in position 1 --- CURRENT TIME 1.054934 seconds
+ID[5] - Iteration: 3 NFunEvals: 642 Bestf: 203.653587 CURRENT TIME: 1.524459 s
+	ID[5] - REFSET FVAL - Content of the Refset in the end of iteration 3 - CURRENT TIME 1.532375 s: 
+		 214.123381 		 256.466948 		 253.303302 		 203.653587 		 215.900718 		 255.473436 		 228.300838 		 227.744271 		 259.394212 		 250.253516 
+		 256.849247 		 252.339698 		 257.297800 
+	ID[5] - INDEX CHANGE COUNTER - end iteration 3 - CURRENT TIME 1.532375 s: 
+		 0 		 0 		 0 		 0 		 0 		 0 		 0 		 0 		 0 		 0 
+		 0 		 0 		 0 
+	ID[5] - COOPERATIVE FLAG - Content of the cooperative flag iter 3 - CURRENT TIME 1.532375 s: 
+		 1 		 0 		 0 		 0 		 0 		 0 		 0 		 0 		 0 		 0 
+		 0 		 0 		 0 
+
++++ID[5] - END ITERATION
+
+
+
++++ID[5] --- INIT ITERATION 4 - CURRENT TIME: 1.535994 s
+	ID[5] - RECEPTION -   Candidate_from_Master 188.032513 is received --- CURRENT TIME 1.536812 sec
+	ID[5] - COMPARATION SOLUTIONS IN RECEPTION - compared candidate value 188.032513 with fbest value 203.653587 ---> improving 7.670415 % (min 0.010000%) -- CURRENT TIME 1.537827 s
+	ID[5] - RECEPTION - ACCEPTED -  received data is introduced in refset - 188.032513 - in position 1 --- CURRENT TIME 1.539673 seconds
+ID[5] - Iteration: 4 NFunEvals: 825 Bestf: 188.032513 CURRENT TIME: 2.033775 s
+	ID[5] - REFSET FVAL - Content of the Refset in the end of iteration 4 - CURRENT TIME 2.035567 s: 
+		 188.032513 		 203.653587 		 214.871923 		 205.478543 		 203.869172 		 249.884140 		 217.510654 		 250.126525 		 250.360256 		 250.091419 
+		 241.368309 		 215.524405 		 236.568955 
+	ID[5] - INDEX CHANGE COUNTER - end iteration 4 - CURRENT TIME 2.035567 s: 
+		 -99 		 1 		 0 		 0 		 0 		 0 		 0 		 0 		 0 		 0 
+		 0 		 0 		 0 
+	ID[5] - COOPERATIVE FLAG - Content of the cooperative flag iter 4 - CURRENT TIME 2.035567 s: 
+		 1 		 0 		 0 		 0 		 0 		 0 		 0 		 0 		 0 		 0 
+		 0 		 0 		 0 
+
++++ID[5] - END ITERATION
+
+
+
++++ID[5] --- INIT ITERATION 5 - CURRENT TIME: 2.037426 s
+	ID[5] - RECEPTION -   Candidate_from_Master 174.025654 is received --- CURRENT TIME 2.037816 sec
+	ID[5] - COMPARATION SOLUTIONS IN RECEPTION - compared candidate value 174.025654 with fbest value 188.032513 ---> improving 7.449168 % (min 0.010000%) -- CURRENT TIME 2.038337 s
+	ID[5] - RECEPTION - ACCEPTED -  received data is introduced in refset - 174.025654 - in position 1 --- CURRENT TIME 2.039875 seconds
+ID[5] - Iteration: 5 NFunEvals: 999 Bestf: 174.025654 CURRENT TIME: 2.451660 s
+	ID[5] - REFSET FVAL - Content of the Refset in the end of iteration 5 - CURRENT TIME 2.454822 s: 
+		 174.025654 		 203.653587 		 203.869172 		 200.667902 		 208.438429 		 207.676193 		 198.538408 		 225.601252 		 220.424753 		 235.450350 
+		 226.416101 		 218.058074 		 222.210888 
+	ID[5] - INDEX CHANGE COUNTER - end iteration 5 - CURRENT TIME 2.454822 s: 
+		 -99 		 2 		 1 		 0 		 0 		 0 		 0 		 0 		 0 		 0 
+		 0 		 0 		 0 
+	ID[5] - COOPERATIVE FLAG - Content of the cooperative flag iter 5 - CURRENT TIME 2.454822 s: 
+		 1 		 0 		 0 		 0 		 0 		 0 		 0 		 0 		 0 		 0 
+		 0 		 0 		 0 
+
++++ID[5] - END ITERATION
+
+
+
++++ID[5] --- INIT ITERATION 6 - CURRENT TIME: 2.460371 s
+	ID[5] - RECEPTION -   Candidate_from_Master 165.204226 is received --- CURRENT TIME 2.466175 sec
+	ID[5] - COMPARATION SOLUTIONS IN RECEPTION - compared candidate value 165.204226 with fbest value 174.025654 ---> improving 5.069039 % (min 0.010000%) -- CURRENT TIME 2.466941 s
+	ID[5] - RECEPTION - ACCEPTED -  received data is introduced in refset - 165.204226 - in position 1 --- CURRENT TIME 2.469175 seconds
+ID[5] - Iteration: 6 NFunEvals: 1178 Bestf: 156.337151 CURRENT TIME: 2.950963 s
+	ID[5] - REFSET FVAL - Content of the Refset in the end of iteration 6 - CURRENT TIME 2.966276 s: 
+		 156.337151 		 197.019034 		 199.485175 		 201.004254 		 203.339481 		 174.345670 		 197.948938 		 187.913420 		 209.195414 		 177.475774 
+		 210.598138 		 197.380310 		 198.810570 
+	ID[5] - INDEX CHANGE COUNTER - end iteration 6 - CURRENT TIME 2.966276 s: 
+		 0 		 0 		 0 		 0 		 0 		 0 		 0 		 0 		 0 		 0 
+		 0 		 0 		 0 
+	ID[5] - COOPERATIVE FLAG - Content of the cooperative flag iter 6 - CURRENT TIME 2.966276 s: 
+		 1 		 0 		 0 		 0 		 0 		 0 		 0 		 0 		 0 		 0 
+		 0 		 0 		 0 
+
++++ID[5] - END ITERATION
+
+
+
++++ID[5] --- INIT ITERATION 7 - CURRENT TIME: 2.968754 s
+	ID[5] - RECEPTION -   Candidate_from_Master 156.116886 is received --- CURRENT TIME 2.975258 sec
+	ID[5] - COMPARATION SOLUTIONS IN RECEPTION - compared candidate value 156.116886 with fbest value 156.337151 ---> improving 0.140891 % (min 0.010000%) -- CURRENT TIME 2.975658 s
+	ID[5] - RECEPTION - ACCEPTED -  received data is introduced in refset - 156.116886 - in position 1 --- CURRENT TIME 2.982571 seconds
+ID[5] - Iteration: 7 NFunEvals: 1350 Bestf: 156.116886 CURRENT TIME: 3.446273 s
+	ID[5] - REFSET FVAL - Content of the Refset in the end of iteration 7 - CURRENT TIME 3.448539 s: 
+		 156.116886 		 174.345670 		 171.576128 		 180.297908 		 189.068891 		 187.748669 		 186.771555 		 195.809510 		 195.782287 		 194.015659 
+		 182.493612 		 175.710283 		 178.993389 
+	ID[5] - INDEX CHANGE COUNTER - end iteration 7 - CURRENT TIME 3.448539 s: 
+		 -99 		 1 		 0 		 0 		 0 		 0 		 0 		 0 		 0 		 0 
+		 0 		 0 		 0 
+	ID[5] - COOPERATIVE FLAG - Content of the cooperative flag iter 7 - CURRENT TIME 3.448539 s: 
+		 1 		 0 		 0 		 0 		 0 		 0 		 0 		 0 		 0 		 0 
+		 0 		 0 		 0 
+
++++ID[5] - END ITERATION
+
+
+
++++ID[5] --- INIT ITERATION 8 - CURRENT TIME: 3.451833 s
+	ID[5] - RECEPTION -   Candidate_from_Master 153.881976 is received --- CURRENT TIME 3.452411 sec
+	ID[5] - COMPARATION SOLUTIONS IN RECEPTION - compared candidate value 153.881976 with fbest value 156.116886 ---> improving 1.431562 % (min 0.010000%) -- CURRENT TIME 3.453871 s
+	ID[5] - RECEPTION - ACCEPTED -  received data is introduced in refset - 153.881976 - in position 1 --- CURRENT TIME 3.455637 seconds
+ID[5] - Iteration: 8 NFunEvals: 1520 Bestf: 153.881976 CURRENT TIME: 3.891048 s
+	ID[5] - REFSET FVAL - Content of the Refset in the end of iteration 8 - CURRENT TIME 3.894909 s: 
+		 153.881976 		 170.420391 		 166.892910 		 175.710283 		 176.037327 		 168.094117 		 168.764659 		 175.911624 		 178.735830 		 169.486070 
+		 175.208019 		 183.161116 		 179.153825 
+	ID[5] - INDEX CHANGE COUNTER - end iteration 8 - CURRENT TIME 3.894909 s: 
+		 -99 		 0 		 0 		 1 		 0 		 0 		 0 		 0 		 0 		 0 
+		 0 		 0 		 0 
+	ID[5] - COOPERATIVE FLAG - Content of the cooperative flag iter 8 - CURRENT TIME 3.894909 s: 
+		 1 		 0 		 0 		 0 		 0 		 0 		 0 		 0 		 0 		 0 
+		 0 		 0 		 0 
+
++++ID[5] - END ITERATION
+
+
+
++++ID[5] --- INIT ITERATION 9 - CURRENT TIME: 3.896607 s
+	ID[5] - RECEPTION -   Candidate_from_Master 152.498457 is received --- CURRENT TIME 3.897026 sec
+	ID[5] - COMPARATION SOLUTIONS IN RECEPTION - compared candidate value 152.498457 with fbest value 153.881976 ---> improving 0.899078 % (min 0.010000%) -- CURRENT TIME 3.897803 s
+	ID[5] - RECEPTION - ACCEPTED -  received data is introduced in refset - 152.498457 - in position 1 --- CURRENT TIME 3.900661 seconds
+ID[5] - Iteration: 9 NFunEvals: 1698 Bestf: 152.498457 CURRENT TIME: 4.358072 s
+	ID[5] - REFSET FVAL - Content of the Refset in the end of iteration 9 - CURRENT TIME 4.361842 s: 
+		 152.498457 		 161.144137 		 165.203465 		 157.381456 		 157.221797 		 159.170806 		 167.894751 		 163.981244 		 165.194083 		 156.989783 
+		 154.108646 		 169.635298 		 158.793823 
+	ID[5] - INDEX CHANGE COUNTER - end iteration 9 - CURRENT TIME 4.361842 s: 
+		 -99 		 0 		 0 		 0 		 0 		 0 		 0 		 0 		 0 		 0 
+		 0 		 0 		 0 
+	ID[5] - COOPERATIVE FLAG - Content of the cooperative flag iter 9 - CURRENT TIME 4.361842 s: 
+		 1 		 0 		 0 		 0 		 0 		 0 		 0 		 0 		 0 		 0 
+		 0 		 0 		 0 
+
++++ID[5] - END ITERATION
+
+
+
++++ID[5] --- INIT ITERATION 10 - CURRENT TIME: 4.363326 s
+	ID[5] - RECEPTION -   Candidate_from_Master 152.299969 is received --- CURRENT TIME 4.365063 sec
+	ID[5] - COMPARATION SOLUTIONS IN RECEPTION - compared candidate value 152.299969 with fbest value 152.498457 ---> improving 0.130158 % (min 0.010000%) -- CURRENT TIME 4.366596 s
+	ID[5] - RECEPTION - ACCEPTED -  received data is introduced in refset - 152.299969 - in position 1 --- CURRENT TIME 4.368819 seconds
+ID[5] - Iteration: 10 NFunEvals: 1879 Bestf: 152.299969 CURRENT TIME: 4.823306 s
+	ID[5] - REFSET FVAL - Content of the Refset in the end of iteration 10 - CURRENT TIME 4.824919 s: 
+		 152.299969 		 152.984937 		 156.982072 		 156.263215 		 153.522891 		 153.710182 		 154.942347 		 155.047110 		 152.998923 		 161.158092 
+		 153.996686 		 157.072584 		 155.390386 
+	ID[5] - INDEX CHANGE COUNTER - end iteration 10 - CURRENT TIME 4.824919 s: 
+		 -99 		 0 		 0 		 0 		 0 		 0 		 0 		 0 		 0 		 0 
+		 0 		 0 		 0 
+	ID[5] - COOPERATIVE FLAG - Content of the cooperative flag iter 10 - CURRENT TIME 4.824919 s: 
+		 1 		 0 		 0 		 0 		 0 		 0 		 0 		 0 		 0 		 0 
+		 0 		 0 		 0 
+
++++ID[5] - END ITERATION
+
+
+
++++ID[5] --- INIT ITERATION 11 - CURRENT TIME: 4.828028 s
+	ID[5] - RECEPTION -   Candidate_from_Master 151.369879 is received --- CURRENT TIME 4.829311 sec
+	ID[5] - COMPARATION SOLUTIONS IN RECEPTION - compared candidate value 151.369879 with fbest value 152.299969 ---> improving 0.610696 % (min 0.010000%) -- CURRENT TIME 4.831503 s
+	ID[5] - RECEPTION - ACCEPTED -  received data is introduced in refset - 151.369879 - in position 1 --- CURRENT TIME 4.836380 seconds
+ID[5] - Iteration: 11 NFunEvals: 2057 Bestf: 151.369879 CURRENT TIME: 5.253000 s
+	ID[5] - REFSET FVAL - Content of the Refset in the end of iteration 11 - CURRENT TIME 5.256647 s: 
+		 151.369879 		 152.756592 		 152.592873 		 152.574517 		 152.643350 		 153.039482 		 152.797650 		 153.160751 		 153.143847 		 153.206265 
+		 153.769114 		 153.236393 		 153.829984 
+	ID[5] - INDEX CHANGE COUNTER - end iteration 11 - CURRENT TIME 5.256647 s: 
+		 -99 		 0 		 0 		 0 		 0 		 0 		 0 		 0 		 0 		 0 
+		 0 		 0 		 0 
+	ID[5] - COOPERATIVE FLAG - Content of the cooperative flag iter 11 - CURRENT TIME 5.256647 s: 
+		 1 		 0 		 0 		 0 		 0 		 0 		 0 		 0 		 0 		 0 
+		 0 		 0 		 0 
+
++++ID[5] - END ITERATION
+
+
+
++++ID[5] --- INIT ITERATION 12 - CURRENT TIME: 5.259697 s
+	ID[5] - RECEPTION -   Candidate_from_Master 150.724123 is received --- CURRENT TIME 5.263149 sec
+	ID[5] - COMPARATION SOLUTIONS IN RECEPTION - compared candidate value 150.724123 with fbest value 151.369879 ---> improving 0.426608 % (min 0.010000%) -- CURRENT TIME 5.266714 s
+	ID[5] - RECEPTION - ACCEPTED -  received data is introduced in refset - 150.724123 - in position 1 --- CURRENT TIME 5.269250 seconds
+	ID[5] - SEND ADAPTING SIGNAL TO MASTER -- recv sol 11 send sol 0 diff-evals 1962 - TIME[5.270182]
+ID[5] - Iteration: 12 NFunEvals: 2235 Bestf: 150.724123 CURRENT TIME: 5.725611 s
+	ID[5] - REFSET FVAL - Content of the Refset in the end of iteration 12 - CURRENT TIME 5.729383 s: 
+		 150.724123 		 152.509848 		 152.366669 		 152.162433 		 152.683688 		 152.689737 		 152.619913 		 152.586946 		 152.716908 		 152.542900 
+		 152.878091 		 151.250093 		 151.890614 
+	ID[5] - INDEX CHANGE COUNTER - end iteration 12 - CURRENT TIME 5.729383 s: 
+		 -99 		 0 		 0 		 0 		 0 		 0 		 0 		 0 		 0 		 0 
+		 0 		 0 		 0 
+	ID[5] - COOPERATIVE FLAG - Content of the cooperative flag iter 12 - CURRENT TIME 5.729383 s: 
+		 1 		 0 		 0 		 0 		 0 		 0 		 0 		 0 		 0 		 0 
+		 0 		 0 		 0 
+
++++ID[5] - END ITERATION
+
+
+
++++ID[5] --- INIT ITERATION 13 - CURRENT TIME: 5.732361 s
+	ID[5] - RECEPTION -   Candidate_from_Master 150.170165 is received --- CURRENT TIME 5.732816 sec
+	ID[5] - COMPARATION SOLUTIONS IN RECEPTION - compared candidate value 150.170165 with fbest value 150.724123 ---> improving 0.367531 % (min 0.010000%) -- CURRENT TIME 5.734074 s
+	ID[5] - RECEPTION - ACCEPTED -  received data is introduced in refset - 150.170165 - in position 1 --- CURRENT TIME 5.735503 seconds
+ID[5] - Iteration: 13 NFunEvals: 2256 Bestf: 150.170165 CURRENT TIME: 5.767868 s
+	ID[5] - REFSET FVAL - Content of the Refset in the end of iteration 13 - CURRENT TIME 5.773651 s: 
+		 150.170165 		 151.084259 		 151.890614 		 152.162433 		 152.366669 
+	ID[5] - INDEX CHANGE COUNTER - end iteration 13 - CURRENT TIME 5.773651 s: 
+		 -99 		 0 		 1 		 1 		 1 
+	ID[5] - COOPERATIVE FLAG - Content of the cooperative flag iter 13 - CURRENT TIME 5.773651 s: 
+		 1 		 0 		 0 		 0 		 0 
+
++++ID[5] - END ITERATION
+
+
+
++++ID[5] --- INIT ITERATION 14 - CURRENT TIME: 5.779327 s
+	ID[5] - RECEPTION -   Candidate_from_Master 150.102951 is received --- CURRENT TIME 5.780171 sec
+	ID[5] - COMPARATION SOLUTIONS IN RECEPTION - compared candidate value 150.102951 with fbest value 150.170165 ---> improving 0.044759 % (min 0.010000%) -- CURRENT TIME 5.782401 s
+	ID[5] - RECEPTION - ACCEPTED -  received data is introduced in refset - 150.102951 - in position 1 --- CURRENT TIME 5.785475 seconds
+ID[5] - Iteration: 14 NFunEvals: 2278 Bestf: 150.102951 CURRENT TIME: 5.851766 s
+	ID[5] - REFSET FVAL - Content of the Refset in the end of iteration 14 - CURRENT TIME 5.858683 s: 
+		 150.102951 		 151.084259 		 151.709951 		 152.162433 		 152.225851 
+	ID[5] - INDEX CHANGE COUNTER - end iteration 14 - CURRENT TIME 5.858683 s: 
+		 -99 		 1 		 0 		 2 		 0 
+	ID[5] - COOPERATIVE FLAG - Content of the cooperative flag iter 14 - CURRENT TIME 5.858683 s: 
+		 1 		 0 		 0 		 0 		 0 
+
++++ID[5] - END ITERATION
+
+
+
++++ID[5] --- INIT ITERATION 15 - CURRENT TIME: 5.865140 s
+	ID[5] - RECEPTION -   Candidate_from_Master 150.035749 is received --- CURRENT TIME 5.866826 sec
+	ID[5] - COMPARATION SOLUTIONS IN RECEPTION - compared candidate value 150.035749 with fbest value 150.102951 ---> improving 0.044771 % (min 0.010000%) -- CURRENT TIME 5.868919 s
+	ID[5] - RECEPTION - ACCEPTED -  received data is introduced in refset - 150.035749 - in position 1 --- CURRENT TIME 5.873928 seconds
+ID[5] - Iteration: 15 NFunEvals: 2305 Bestf: 149.967429 CURRENT TIME: 5.951898 s
+	ID[5] - REFSET FVAL - Content of the Refset in the end of iteration 15 - CURRENT TIME 5.958251 s: 
+		 149.967429 		 150.669813 		 150.825299 		 152.162433 		 150.362788 
+	ID[5] - INDEX CHANGE COUNTER - end iteration 15 - CURRENT TIME 5.958251 s: 
+		 0 		 0 		 0 		 3 		 0 
+	ID[5] - COOPERATIVE FLAG - Content of the cooperative flag iter 15 - CURRENT TIME 5.958251 s: 
+		 1 		 0 		 0 		 0 		 0 
+
++++ID[5] - END ITERATION
+
+
+
++++ID[5] --- INIT ITERATION 16 - CURRENT TIME: 5.963300 s
+	ID[5] - RECEPTION -   Candidate_from_Master 150.005202 is received --- CURRENT TIME 5.965037 sec
+	ID[5] - RECEPTION NOT ACCEPTED -   Candidate_from_Master 150.005202 is discard : there is a better solution in REFSET 149.967429 --- CURRENT TIME 5.965037 sec
+	ID[5] - CHECK TO SEND  - compared BKS_S 149.967429 with BKS_M 150.005202 ---> improving 0.025181 % (threshold 0.010000) -- CURRENT TIME 5.969346 s
+
+	ID[5] - ASYNCH SEND - slave final send ---> 149.967429 -- CURRENT TIME 5.973428 seconds
+ID[5] - Iteration: 16 NFunEvals: 2331 Bestf: 149.967429 CURRENT TIME: 6.052325 s
+	ID[5] - REFSET FVAL - Content of the Refset in the end of iteration 16 - CURRENT TIME 6.056592 s: 
+		 149.967429 		 150.362788 		 150.440851 		 150.215931 		 151.344286 
+	ID[5] - INDEX CHANGE COUNTER - end iteration 16 - CURRENT TIME 6.056592 s: 
+		 1 		 1 		 0 		 0 		 0 
+	ID[5] - COOPERATIVE FLAG - Content of the cooperative flag iter 16 - CURRENT TIME 6.056592 s: 
+		 1 		 0 		 0 		 0 		 0 
+
++++ID[5] - END ITERATION
+
+
+
++++ID[5] --- INIT ITERATION 17 - CURRENT TIME: 6.061364 s
+	ID[5] - RECEPTION -   Candidate_from_Master 149.948148 is received --- CURRENT TIME 6.063656 sec
+	ID[5] - COMPARATION SOLUTIONS IN RECEPTION - compared candidate value 149.948148 with fbest value 149.967429 ---> improving 0.012857 % (min 0.010000%) -- CURRENT TIME 6.066513 s
+	ID[5] - RECEPTION - ACCEPTED -  received data is introduced in refset - 149.948148 - in position 1 --- CURRENT TIME 6.070765 seconds
+ID[5] - Iteration: 17 NFunEvals: 2355 Bestf: 149.948148 CURRENT TIME: 6.143018 s
+	ID[5] - REFSET FVAL - Content of the Refset in the end of iteration 17 - CURRENT TIME 6.146225 s: 
+		 149.948148 		 150.054893 		 150.362788 		 150.243558 		 151.008298 
+	ID[5] - INDEX CHANGE COUNTER - end iteration 17 - CURRENT TIME 6.146225 s: 
+		 -99 		 0 		 2 		 0 		 0 
+	ID[5] - COOPERATIVE FLAG - Content of the cooperative flag iter 17 - CURRENT TIME 6.146225 s: 
+		 1 		 0 		 0 		 0 		 0 
+
++++ID[5] - END ITERATION
+
+
+
++++ID[5] --- INIT ITERATION 18 - CURRENT TIME: 6.148142 s
+	ID[5] - RECEPTION -   Candidate_from_Master 149.886514 is received --- CURRENT TIME 6.149536 sec
+	ID[5] - COMPARATION SOLUTIONS IN RECEPTION - compared candidate value 149.886514 with fbest value 149.948148 ---> improving 0.041103 % (min 0.010000%) -- CURRENT TIME 6.150286 s
+	ID[5] - RECEPTION - ACCEPTED -  received data is introduced in refset - 149.886514 - in position 1 --- CURRENT TIME 6.151742 seconds
+ID[5] - Iteration: 18 NFunEvals: 2382 Bestf: 149.886514 CURRENT TIME: 6.234102 s
+	ID[5] - REFSET FVAL - Content of the Refset in the end of iteration 18 - CURRENT TIME 6.236713 s: 
+		 149.886514 		 150.015167 		 150.142617 		 150.070340 		 149.932699 
+	ID[5] - INDEX CHANGE COUNTER - end iteration 18 - CURRENT TIME 6.236713 s: 
+		 -99 		 0 		 0 		 0 		 0 
+	ID[5] - COOPERATIVE FLAG - Content of the cooperative flag iter 18 - CURRENT TIME 6.236713 s: 
+		 1 		 0 		 0 		 0 		 0 
+
++++ID[5] - END ITERATION
+
+
+
++++ID[5] --- INIT ITERATION 19 - CURRENT TIME: 6.240235 s
+	ID[5] - RECEPTION -   Candidate_from_Master 149.871063 is received --- CURRENT TIME 6.241101 sec
+	ID[5] - COMPARATION SOLUTIONS IN RECEPTION - compared candidate value 149.871063 with fbest value 149.886514 ---> improving 0.010309 % (min 0.010000%) -- CURRENT TIME 6.242133 s
+	ID[5] - RECEPTION - ACCEPTED -  received data is introduced in refset - 149.871063 - in position 1 --- CURRENT TIME 6.243645 seconds
+ID[5] - Iteration: 19 NFunEvals: 2405 Bestf: 149.836957 CURRENT TIME: 6.275936 s
+	ID[5] - REFSET FVAL - Content of the Refset in the end of iteration 19 - CURRENT TIME 6.285354 s: 
+		 149.836957 		 149.932699 		 150.015167 		 149.919658 		 149.949098 
+	ID[5] - INDEX CHANGE COUNTER - end iteration 19 - CURRENT TIME 6.285354 s: 
+		 0 		 1 		 1 		 0 		 0 
+	ID[5] - COOPERATIVE FLAG - Content of the cooperative flag iter 19 - CURRENT TIME 6.285354 s: 
+		 1 		 0 		 0 		 0 		 0 
+
++++ID[5] - END ITERATION
+
+
+
++++ID[5] --- INIT ITERATION 20 - CURRENT TIME: 6.290536 s
+	ID[5] - RECEPTION -   Candidate_from_Master 149.769050 is received --- CURRENT TIME 6.291395 sec
+	ID[5] - COMPARATION SOLUTIONS IN RECEPTION - compared candidate value 149.769050 with fbest value 149.836957 ---> improving 0.045321 % (min 0.010000%) -- CURRENT TIME 6.292200 s
+	ID[5] - RECEPTION - ACCEPTED -  received data is introduced in refset - 149.769050 - in position 1 --- CURRENT TIME 6.294407 seconds
+ID[5] - Iteration: 20 NFunEvals: 2434 Bestf: 149.765011 CURRENT TIME: 6.357367 s
+	ID[5] - REFSET FVAL - Content of the Refset in the end of iteration 20 - CURRENT TIME 6.363344 s: 
+		 149.765011 		 149.794371 		 149.786687 		 149.815340 		 149.840856 
+	ID[5] - INDEX CHANGE COUNTER - end iteration 20 - CURRENT TIME 6.363344 s: 
+		 0 		 0 		 0 		 0 		 0 
+	ID[5] - COOPERATIVE FLAG - Content of the cooperative flag iter 20 - CURRENT TIME 6.363344 s: 
+		 1 		 0 		 0 		 0 		 0 
+
++++ID[5] - END ITERATION
+
+
+
++++ID[5] --- INIT ITERATION 21 - CURRENT TIME: 6.367552 s
+	ID[5] - CHECK TO SEND  - compared BKS_S 149.765011 with BKS_M 149.769050 ---> improving 0.002697 % (threshold 0.010000) -- CURRENT TIME 6.368333 s
+ID[5] - Iteration: 21 NFunEvals: 2462 Bestf: 149.765011 CURRENT TIME: 6.456258 s
+	ID[5] - REFSET FVAL - Content of the Refset in the end of iteration 21 - CURRENT TIME 6.459634 s: 
+		 149.765011 		 149.786687 		 149.781805 		 149.768836 		 149.789083 
+	ID[5] - INDEX CHANGE COUNTER - end iteration 21 - CURRENT TIME 6.459634 s: 
+		 1 		 1 		 0 		 0 		 0 
+	ID[5] - COOPERATIVE FLAG - Content of the cooperative flag iter 21 - CURRENT TIME 6.459634 s: 
+		 1 		 0 		 0 		 0 		 0 
+
++++ID[5] - END ITERATION
+
+
+
++++ID[5] --- INIT ITERATION 22 - CURRENT TIME: 6.463615 s
+	ID[5] - RECEPTION -   Candidate_from_Master 149.732187 is received --- CURRENT TIME 6.465831 sec
+	ID[5] - COMPARATION SOLUTIONS IN RECEPTION - compared candidate value 149.732187 with fbest value 149.765011 ---> improving 0.021917 % (min 0.010000%) -- CURRENT TIME 6.467857 s
+	ID[5] - RECEPTION - ACCEPTED -  received data is introduced in refset - 149.732187 - in position 1 --- CURRENT TIME 6.470083 seconds
+ID[5] - Iteration: 22 NFunEvals: 2492 Bestf: 149.708849 CURRENT TIME: 6.556848 s
+	ID[5] - REFSET FVAL - Content of the Refset in the end of iteration 22 - CURRENT TIME 6.628890 s: 
+		 149.708849 		 149.754082 		 149.781805 		 149.739207 		 149.716339 
+	ID[5] - INDEX CHANGE COUNTER - end iteration 22 - CURRENT TIME 6.628890 s: 
+		 0 		 0 		 1 		 0 		 0 
+	ID[5] - COOPERATIVE FLAG - Content of the cooperative flag iter 22 - CURRENT TIME 6.628890 s: 
+		 1 		 0 		 0 		 0 		 0 
+
++++ID[5] - END ITERATION
+
+
+
++++ID[5] --- INIT ITERATION 23 - CURRENT TIME: 6.633882 s
+	ID[5] - RECEPTION -   Candidate_from_Master 149.701292 is received --- CURRENT TIME 6.635742 sec
+	ID[5] - COMPARATION SOLUTIONS IN RECEPTION - compared candidate value 149.701292 with fbest value 149.708849 ---> improving 0.005048 % (min 0.010000%) -- CURRENT TIME 6.638574 s
+	ID[5] - RECEPTION - ACCEPTED -  received data is introduced in refset - 149.701292 - in position 1 --- CURRENT TIME 6.643341 seconds
+ID[5] - Iteration: 23 NFunEvals: 2521 Bestf: 149.697623 CURRENT TIME: 6.681330 s
+	ID[5] - REFSET FVAL - Content of the Refset in the end of iteration 23 - CURRENT TIME 6.686295 s: 
+		 149.697623 		 149.712247 		 149.718084 		 149.715338 		 149.716310 
+	ID[5] - INDEX CHANGE COUNTER - end iteration 23 - CURRENT TIME 6.686295 s: 
+		 0 		 0 		 0 		 0 		 0 
+	ID[5] - COOPERATIVE FLAG - Content of the cooperative flag iter 23 - CURRENT TIME 6.686295 s: 
+		 1 		 0 		 0 		 0 		 0 
+
++++ID[5] - END ITERATION
+
+
+
++++ID[5] --- INIT ITERATION 24 - CURRENT TIME: 6.688389 s
+	ID[5] - CHECK TO SEND  - compared BKS_S 149.697623 with BKS_M 149.701292 ---> improving 0.002451 % (threshold 0.010000) -- CURRENT TIME 6.689912 s
+ID[5] - Iteration: 24 NFunEvals: 2545 Bestf: 149.695844 CURRENT TIME: 6.746931 s
+	ID[5] - REFSET FVAL - Content of the Refset in the end of iteration 24 - CURRENT TIME 6.778129 s: 
+		 149.695844 		 149.709265 		 149.715338 		 149.698423 		 149.707534 
+	ID[5] - INDEX CHANGE COUNTER - end iteration 24 - CURRENT TIME 6.778129 s: 
+		 0 		 0 		 1 		 0 		 0 
+	ID[5] - COOPERATIVE FLAG - Content of the cooperative flag iter 24 - CURRENT TIME 6.778129 s: 
+		 1 		 0 		 0 		 0 		 0 
+
++++ID[5] - END ITERATION
+
+
+
++++ID[5] --- INIT ITERATION 25 - CURRENT TIME: 6.793545 s
+	ID[5] - RECEPTION -   Candidate_from_Master 149.658646 is received --- CURRENT TIME 6.794378 sec
+	ID[5] - COMPARATION SOLUTIONS IN RECEPTION - compared candidate value 149.658646 with fbest value 149.695844 ---> improving 0.024849 % (min 0.010000%) -- CURRENT TIME 6.795591 s
+	ID[5] - RECEPTION - ACCEPTED -  received data is introduced in refset - 149.658646 - in position 1 --- CURRENT TIME 6.800053 seconds
+ID[5] - Iteration: 25 NFunEvals: 2569 Bestf: 149.658646 CURRENT TIME: 6.850681 s
+	ID[5] - REFSET FVAL - Content of the Refset in the end of iteration 25 - CURRENT TIME 6.876143 s: 
+		 149.658646 		 149.693558 		 149.704539 		 149.702988 		 149.661800 
+	ID[5] - INDEX CHANGE COUNTER - end iteration 25 - CURRENT TIME 6.876143 s: 
+		 -99 		 0 		 0 		 0 		 0 
+	ID[5] - COOPERATIVE FLAG - Content of the cooperative flag iter 25 - CURRENT TIME 6.876143 s: 
+		 1 		 0 		 0 		 0 		 0 
+
++++ID[5] - END ITERATION
+
+
+
++++ID[5] --- INIT ITERATION 26 - CURRENT TIME: 6.886376 s
+ID[5] - Iteration: 26 NFunEvals: 2593 Bestf: 149.655994 CURRENT TIME: 6.941356 s
+	ID[5] - REFSET FVAL - Content of the Refset in the end of iteration 26 - CURRENT TIME 6.961053 s: 
+		 149.658646 		 149.655994 		 149.678956 		 149.697936 		 149.687470 
+	ID[5] - INDEX CHANGE COUNTER - end iteration 26 - CURRENT TIME 6.961053 s: 
+		 -98 		 0 		 0 		 0 		 0 
+	ID[5] - COOPERATIVE FLAG - Content of the cooperative flag iter 26 - CURRENT TIME 6.961053 s: 
+		 1 		 0 		 0 		 0 		 0 
+
++++ID[5] - END ITERATION
+
+
+
++++ID[5] --- INIT ITERATION 27 - CURRENT TIME: 6.965435 s
+	ID[5] - CHECK TO SEND  - compared BKS_S 149.655994 with BKS_M 149.658646 ---> improving 0.001772 % (threshold 0.010000) -- CURRENT TIME 6.967338 s
+ID[5] - Iteration: 27 NFunEvals: 2620 Bestf: 149.652584 CURRENT TIME: 7.047489 s
+	ID[5] - REFSET FVAL - Content of the Refset in the end of iteration 27 - CURRENT TIME 7.054118 s: 
+		 149.655994 		 149.652584 		 149.678956 		 149.663939 		 149.659602 
+	ID[5] - INDEX CHANGE COUNTER - end iteration 27 - CURRENT TIME 7.054118 s: 
+		 1 		 0 		 1 		 0 		 0 
+	ID[5] - COOPERATIVE FLAG - Content of the cooperative flag iter 27 - CURRENT TIME 7.054118 s: 
+		 0 		 1 		 0 		 0 		 0 
+
++++ID[5] - END ITERATION
+
+
+
++++ID[5] --- INIT ITERATION 28 - CURRENT TIME: 7.059755 s
+	ID[5] - CHECK TO SEND  - compared BKS_S 149.652584 with BKS_M 149.658646 ---> improving 0.004051 % (threshold 0.010000) -- CURRENT TIME 7.061010 s
+ID[5] - Iteration: 28 NFunEvals: 2646 Bestf: 149.650430 CURRENT TIME: 7.147412 s
+	ID[5] - REFSET FVAL - Content of the Refset in the end of iteration 28 - CURRENT TIME 7.158880 s: 
+		 149.652584 		 149.653570 		 149.650430 		 149.656920 		 149.664380 
+	ID[5] - INDEX CHANGE COUNTER - end iteration 28 - CURRENT TIME 7.158880 s: 
+		 1 		 0 		 0 		 0 		 0 
+	ID[5] - COOPERATIVE FLAG - Content of the cooperative flag iter 28 - CURRENT TIME 7.158880 s: 
+		 1 		 0 		 0 		 0 		 0 
+
++++ID[5] - END ITERATION
+
+
+
++++ID[5] --- INIT ITERATION 29 - CURRENT TIME: 7.168853 s
+	ID[5] - RECEPTION -   Candidate_from_Master 149.641779 is received --- CURRENT TIME 7.172398 sec
+	ID[5] - COMPARATION SOLUTIONS IN RECEPTION - compared candidate value 149.641779 with fbest value 149.650430 ---> improving 0.005781 % (min 0.010000%) -- CURRENT TIME 7.175482 s
+	ID[5] - RECEPTION - ACCEPTED -  received data is introduced in refset - 149.641779 - in position 1 --- CURRENT TIME 7.177945 seconds
+ID[5] - Iteration: 29 NFunEvals: 2682 Bestf: 149.626412 CURRENT TIME: 7.275021 s
+	ID[5] - REFSET FVAL - Content of the Refset in the end of iteration 29 - CURRENT TIME 7.289949 s: 
+		 149.626412 		 149.642836 		 149.642359 		 149.640995 		 149.646469 
+	ID[5] - INDEX CHANGE COUNTER - end iteration 29 - CURRENT TIME 7.289949 s: 
+		 0 		 0 		 0 		 0 		 0 
+	ID[5] - COOPERATIVE FLAG - Content of the cooperative flag iter 29 - CURRENT TIME 7.289949 s: 
+		 1 		 0 		 0 		 0 		 0 
+
++++ID[5] - END ITERATION
+
+
+
++++ID[5] --- INIT ITERATION 30 - CURRENT TIME: 7.292924 s
+	ID[5] - CHECK TO SEND  - compared BKS_S 149.626412 with BKS_M 149.641779 ---> improving 0.010269 % (threshold 0.010000) -- CURRENT TIME 7.293555 s
+
+	ID[5] - ASYNCH SEND - slave final send ---> 149.626412 -- CURRENT TIME 7.295342 seconds
+ID[5] - Iteration: 30 NFunEvals: 2708 Bestf: 149.613184 CURRENT TIME: 7.352962 s
+	ID[5] - REFSET FVAL - Content of the Refset in the end of iteration 30 - CURRENT TIME 7.374712 s: 
+		 149.626412 		 149.625344 		 149.637077 		 149.626886 		 149.613184 
+	ID[5] - INDEX CHANGE COUNTER - end iteration 30 - CURRENT TIME 7.374712 s: 
+		 1 		 0 		 0 		 0 		 0 
+	ID[5] - COOPERATIVE FLAG - Content of the cooperative flag iter 30 - CURRENT TIME 7.374712 s: 
+		 1 		 0 		 0 		 0 		 0 
+
++++ID[5] - END ITERATION
+
+
+
++++ID[5] --- INIT ITERATION 31 - CURRENT TIME: 7.387016 s
+	ID[5] - RECEPTION -   Candidate_from_Master 149.626412 is received --- CURRENT TIME 7.393406 sec
+	ID[5] - RECEPTION NOT ACCEPTED -   Candidate_from_Master 149.626412 is discard : there is a better solution in REFSET 149.613184 --- CURRENT TIME 7.393406 sec
+	ID[5] - CHECK TO SEND  - compared BKS_S 149.613184 with BKS_M 149.626412 ---> improving 0.008841 % (threshold 0.010000) -- CURRENT TIME 7.400630 s
+ID[5] - Iteration: 31 NFunEvals: 2741 Bestf: 149.608405 CURRENT TIME: 7.463269 s
+	ID[5] - REFSET FVAL - Content of the Refset in the end of iteration 31 - CURRENT TIME 7.477268 s: 
+		 149.613184 		 149.608405 		 149.617939 		 149.618917 		 149.615569 
+	ID[5] - INDEX CHANGE COUNTER - end iteration 31 - CURRENT TIME 7.477268 s: 
+		 1 		 0 		 0 		 0 		 0 
+	ID[5] - COOPERATIVE FLAG - Content of the cooperative flag iter 31 - CURRENT TIME 7.477268 s: 
+		 0 		 0 		 1 		 0 		 0 
+
++++ID[5] - END ITERATION
+
+
+
++++ID[5] --- INIT ITERATION 32 - CURRENT TIME: 7.493703 s
+	ID[5] - CHECK TO SEND  - compared BKS_S 149.608405 with BKS_M 149.626412 ---> improving 0.012034 % (threshold 0.010000) -- CURRENT TIME 7.529195 s
+
+	ID[5] - ASYNCH SEND - slave final send ---> 149.608405 -- CURRENT TIME 7.536566 seconds
+ID[5] - Iteration: 32 NFunEvals: 2766 Bestf: 149.601334 CURRENT TIME: 7.568353 s
+	ID[5] - REFSET FVAL - Content of the Refset in the end of iteration 32 - CURRENT TIME 7.593215 s: 
+		 149.608405 		 149.603649 		 149.604362 		 149.601334 		 149.609895 
+	ID[5] - INDEX CHANGE COUNTER - end iteration 32 - CURRENT TIME 7.593215 s: 
+		 1 		 0 		 0 		 0 		 0 
+	ID[5] - COOPERATIVE FLAG - Content of the cooperative flag iter 32 - CURRENT TIME 7.593215 s: 
+		 0 		 0 		 0 		 1 		 0 
+
++++ID[5] - END ITERATION
+
+
+
++++ID[5] --- INIT ITERATION 33 - CURRENT TIME: 7.597819 s
+	ID[5] - RECEPTION -   Candidate_from_Master 149.608405 is received --- CURRENT TIME 7.599091 sec
+	ID[5] - RECEPTION NOT ACCEPTED -   Candidate_from_Master 149.608405 is discard : there is a better solution in REFSET 149.601334 --- CURRENT TIME 7.599091 sec
+	ID[5] - CHECK TO SEND  - compared BKS_S 149.601334 with BKS_M 149.608405 ---> improving 0.004726 % (threshold 0.010000) -- CURRENT TIME 7.601680 s
+ID[5] - Iteration: 33 NFunEvals: 2792 Bestf: 149.601114 CURRENT TIME: 7.656340 s
+	ID[5] - REFSET FVAL - Content of the Refset in the end of iteration 33 - CURRENT TIME 7.675498 s: 
+		 149.601334 		 149.601114 		 149.604362 		 149.601671 		 149.601717 
+	ID[5] - INDEX CHANGE COUNTER - end iteration 33 - CURRENT TIME 7.675498 s: 
+		 1 		 0 		 1 		 0 		 0 
+	ID[5] - COOPERATIVE FLAG - Content of the cooperative flag iter 33 - CURRENT TIME 7.675498 s: 
+		 1 		 0 		 0 		 0 		 0 
+
++++ID[5] - END ITERATION
+
+
+
++++ID[5] --- INIT ITERATION 34 - CURRENT TIME: 7.687554 s
+	ID[5] - CHECK TO SEND  - compared BKS_S 149.601114 with BKS_M 149.608405 ---> improving 0.004873 % (threshold 0.010000) -- CURRENT TIME 7.691510 s
+ID[5] - Iteration: 34 NFunEvals: 2822 Bestf: 149.600800 CURRENT TIME: 7.752067 s
+	ID[5] - REFSET FVAL - Content of the Refset in the end of iteration 34 - CURRENT TIME 7.758036 s: 
+		 149.600834 		 149.600800 		 149.600920 		 149.601063 		 149.601151 
+	ID[5] - INDEX CHANGE COUNTER - end iteration 34 - CURRENT TIME 7.758036 s: 
+		 0 		 0 		 0 		 0 		 0 
+	ID[5] - COOPERATIVE FLAG - Content of the cooperative flag iter 34 - CURRENT TIME 7.758036 s: 
+		 0 		 1 		 0 		 0 		 0 
+
++++ID[5] - END ITERATION
+
+
+
++++ID[5] --- INIT ITERATION 35 - CURRENT TIME: 7.764638 s
+	ID[5] - CHECK TO SEND  - compared BKS_S 149.600800 with BKS_M 149.608405 ---> improving 0.005083 % (threshold 0.010000) -- CURRENT TIME 7.766364 s
+ID[5] - Iteration: 35 NFunEvals: 2849 Bestf: 149.600148 CURRENT TIME: 7.851367 s
+	ID[5] - REFSET FVAL - Content of the Refset in the end of iteration 35 - CURRENT TIME 7.858349 s: 
+		 149.600800 		 149.600792 		 149.600148 		 149.600539 		 149.600588 
+	ID[5] - INDEX CHANGE COUNTER - end iteration 35 - CURRENT TIME 7.858349 s: 
+		 1 		 0 		 0 		 0 		 0 
+	ID[5] - COOPERATIVE FLAG - Content of the cooperative flag iter 35 - CURRENT TIME 7.858349 s: 
+		 1 		 0 		 0 		 0 		 0 
+
++++ID[5] - END ITERATION
+
+
+
++++ID[5] --- INIT ITERATION 36 - CURRENT TIME: 7.861759 s
+	ID[5] - CHECK TO SEND  - compared BKS_S 149.600148 with BKS_M 149.608405 ---> improving 0.005519 % (threshold 0.010000) -- CURRENT TIME 7.863936 s
+ID[5] - Iteration: 36 NFunEvals: 2874 Bestf: 149.599535 CURRENT TIME: 7.940452 s
+	ID[5] - REFSET FVAL - Content of the Refset in the end of iteration 36 - CURRENT TIME 8.024589 s: 
+		 149.600148 		 149.599535 		 149.600238 		 149.600511 		 149.599937 
+	ID[5] - INDEX CHANGE COUNTER - end iteration 36 - CURRENT TIME 8.024589 s: 
+		 1 		 0 		 0 		 0 		 0 
+	ID[5] - COOPERATIVE FLAG - Content of the cooperative flag iter 36 - CURRENT TIME 8.024589 s: 
+		 0 		 0 		 0 		 0 		 1 
+
++++ID[5] - END ITERATION
+
+
+
++++ID[5] --- INIT ITERATION 37 - CURRENT TIME: 8.031799 s
+	ID[5] - CHECK TO SEND  - compared BKS_S 149.599535 with BKS_M 149.608405 ---> improving 0.005929 % (threshold 0.010000) -- CURRENT TIME 8.034011 s
+ID[5] - Iteration: 37 NFunEvals: 2919 Bestf: 149.597494 CURRENT TIME: 8.133866 s
+	ID[5] - REFSET FVAL - Content of the Refset in the end of iteration 37 - CURRENT TIME 8.140814 s: 
+		 149.597494 		 149.599451 		 149.599066 		 149.599765 		 149.599219 
+	ID[5] - INDEX CHANGE COUNTER - end iteration 37 - CURRENT TIME 8.140814 s: 
+		 0 		 0 		 0 		 0 		 0 
+	ID[5] - COOPERATIVE FLAG - Content of the cooperative flag iter 37 - CURRENT TIME 8.140814 s: 
+		 0 		 1 		 0 		 0 		 0 
+
++++ID[5] - END ITERATION
+
+
+
++++ID[5] --- INIT ITERATION 38 - CURRENT TIME: 8.143766 s
+	ID[5] - CHECK TO SEND  - compared BKS_S 149.597494 with BKS_M 149.608405 ---> improving 0.007293 % (threshold 0.010000) -- CURRENT TIME 8.144137 s
+ID[5] - Iteration: 38 NFunEvals: 2958 Bestf: 149.595968 CURRENT TIME: 8.237736 s
+	ID[5] - REFSET FVAL - Content of the Refset in the end of iteration 38 - CURRENT TIME 8.246368 s: 
+		 149.595968 		 149.598592 		 149.597791 		 149.598302 		 149.596253 
+	ID[5] - INDEX CHANGE COUNTER - end iteration 38 - CURRENT TIME 8.246368 s: 
+		 0 		 0 		 0 		 0 		 0 
+	ID[5] - COOPERATIVE FLAG - Content of the cooperative flag iter 38 - CURRENT TIME 8.246368 s: 
+		 0 		 0 		 0 		 1 		 0 
+
++++ID[5] - END ITERATION
+
+
+
++++ID[5] --- INIT ITERATION 39 - CURRENT TIME: 8.247591 s
+	ID[5] - CHECK TO SEND  - compared BKS_S 149.595968 with BKS_M 149.608405 ---> improving 0.008313 % (threshold 0.010000) -- CURRENT TIME 8.248256 s
+ID[5] - Iteration: 39 NFunEvals: 2988 Bestf: 149.594997 CURRENT TIME: 8.334831 s
+	ID[5] - REFSET FVAL - Content of the Refset in the end of iteration 39 - CURRENT TIME 8.341550 s: 
+		 149.595310 		 149.595657 		 149.596136 		 149.595833 		 149.594997 
+	ID[5] - INDEX CHANGE COUNTER - end iteration 39 - CURRENT TIME 8.341550 s: 
+		 0 		 0 		 0 		 0 		 0 
+	ID[5] - COOPERATIVE FLAG - Content of the cooperative flag iter 39 - CURRENT TIME 8.341550 s: 
+		 0 		 0 		 0 		 1 		 0 
+
++++ID[5] - END ITERATION
+
+
+
++++ID[5] --- INIT ITERATION 40 - CURRENT TIME: 8.344544 s
+	ID[5] - CHECK TO SEND  - compared BKS_S 149.594997 with BKS_M 149.608405 ---> improving 0.008962 % (threshold 0.010000) -- CURRENT TIME 8.345490 s
+ID[5] - Iteration: 40 NFunEvals: 3019 Bestf: 149.594234 CURRENT TIME: 8.431905 s
+	ID[5] - REFSET FVAL - Content of the Refset in the end of iteration 40 - CURRENT TIME 8.437636 s: 
+		 149.594762 		 149.594920 		 149.595209 		 149.594572 		 149.594234 
+	ID[5] - INDEX CHANGE COUNTER - end iteration 40 - CURRENT TIME 8.437636 s: 
+		 0 		 0 		 0 		 0 		 0 
+	ID[5] - COOPERATIVE FLAG - Content of the cooperative flag iter 40 - CURRENT TIME 8.437636 s: 
+		 0 		 0 		 0 		 1 		 0 
+
++++ID[5] - END ITERATION
+
+
+
++++ID[5] --- INIT ITERATION 41 - CURRENT TIME: 8.439647 s
+	ID[5] - CHECK TO SEND  - compared BKS_S 149.594234 with BKS_M 149.608405 ---> improving 0.009472 % (threshold 0.010000) -- CURRENT TIME 8.441486 s
+ID[5] - Iteration: 41 NFunEvals: 3045 Bestf: 149.594035 CURRENT TIME: 8.523136 s
+	ID[5] - REFSET FVAL - Content of the Refset in the end of iteration 41 - CURRENT TIME 8.531556 s: 
+		 149.594234 		 149.594354 		 149.594405 		 149.594035 		 149.594463 
+	ID[5] - INDEX CHANGE COUNTER - end iteration 41 - CURRENT TIME 8.531556 s: 
+		 1 		 0 		 0 		 0 		 0 
+	ID[5] - COOPERATIVE FLAG - Content of the cooperative flag iter 41 - CURRENT TIME 8.531556 s: 
+		 0 		 1 		 0 		 0 		 0 
+
++++ID[5] - END ITERATION
+
+
+
++++ID[5] --- INIT ITERATION 42 - CURRENT TIME: 8.532929 s
+	ID[5] - CHECK TO SEND  - compared BKS_S 149.594035 with BKS_M 149.608405 ---> improving 0.009605 % (threshold 0.010000) -- CURRENT TIME 8.533351 s
+ID[5] - Iteration: 42 NFunEvals: 3077 Bestf: 149.593825 CURRENT TIME: 8.572846 s
+	ID[5] - REFSET FVAL - Content of the Refset in the end of iteration 42 - CURRENT TIME 8.582810 s: 
+		 149.593825 		 149.594234 		 149.594051 		 149.594006 		 1588.372009 
+	ID[5] - INDEX CHANGE COUNTER - end iteration 42 - CURRENT TIME 8.582810 s: 
+		 0 		 2 		 0 		 0 		 0 
+	ID[5] - COOPERATIVE FLAG - Content of the cooperative flag iter 42 - CURRENT TIME 8.582810 s: 
+		 0 		 0 		 1 		 0 		 0 
+
++++ID[5] - END ITERATION
+
+
+
++++ID[5] --- INIT ITERATION 43 - CURRENT TIME: 8.585955 s
+	ID[5] - RECEPTION -   Candidate_from_Master 149.591708 is received --- CURRENT TIME 8.586630 sec
+	ID[5] - COMPARATION SOLUTIONS IN RECEPTION - compared candidate value 149.591708 with fbest value 149.593825 ---> improving 0.001416 % (min 0.010000%) -- CURRENT TIME 8.587898 s
+	ID[5] - RECEPTION - ACCEPTED -  received data is introduced in refset - 149.591708 - in position 3 --- CURRENT TIME 8.590083 seconds
+ID[5] - Iteration: 43 NFunEvals: 3108 Bestf: 149.591708 CURRENT TIME: 8.656366 s
+	ID[5] - REFSET FVAL - Content of the Refset in the end of iteration 43 - CURRENT TIME 8.660599 s: 
+		 149.591708 		 149.593799 		 149.593847 		 420.340717 		 3508.102713 
+	ID[5] - INDEX CHANGE COUNTER - end iteration 43 - CURRENT TIME 8.660599 s: 
+		 -99 		 0 		 0 		 0 		 0 
+	ID[5] - COOPERATIVE FLAG - Content of the cooperative flag iter 43 - CURRENT TIME 8.660599 s: 
+		 1 		 0 		 0 		 0 		 0 
+
++++ID[5] - END ITERATION
+
+
+
++++ID[5] --- INIT ITERATION 44 - CURRENT TIME: 8.664811 s
+ID[5] - Iteration: 44 NFunEvals: 3136 Bestf: 149.591708 CURRENT TIME: 8.749739 s
+	ID[5] - REFSET FVAL - Content of the Refset in the end of iteration 44 - CURRENT TIME 8.755680 s: 
+		 149.591708 		 149.593761 		 149.593827 		 254.028871 		 670.941921 
+	ID[5] - INDEX CHANGE COUNTER - end iteration 44 - CURRENT TIME 8.755680 s: 
+		 -98 		 0 		 0 		 0 		 0 
+	ID[5] - COOPERATIVE FLAG - Content of the cooperative flag iter 44 - CURRENT TIME 8.755680 s: 
+		 1 		 0 		 0 		 0 		 0 
+
++++ID[5] - END ITERATION
+
+
+
++++ID[5] --- INIT ITERATION 45 - CURRENT TIME: 8.759913 s
+ID[5] - Iteration: 45 NFunEvals: 3161 Bestf: 149.591708 CURRENT TIME: 8.847132 s
+	ID[5] - REFSET FVAL - Content of the Refset in the end of iteration 45 - CURRENT TIME 8.848473 s: 
+		 149.591708 		 149.593761 		 149.591967 		 254.028871 		 270.052870 
+	ID[5] - INDEX CHANGE COUNTER - end iteration 45 - CURRENT TIME 8.848473 s: 
+		 -97 		 1 		 0 		 1 		 0 
+	ID[5] - COOPERATIVE FLAG - Content of the cooperative flag iter 45 - CURRENT TIME 8.848473 s: 
+		 1 		 0 		 0 		 0 		 0 
+
++++ID[5] - END ITERATION
+
+
+
++++ID[5] --- INIT ITERATION 46 - CURRENT TIME: 8.850585 s
+ID[5] - Iteration: 46 NFunEvals: 3186 Bestf: 149.591125 CURRENT TIME: 8.935390 s
+	ID[5] - REFSET FVAL - Content of the Refset in the end of iteration 46 - CURRENT TIME 8.940865 s: 
+		 149.591708 		 149.591125 		 149.593761 		 250.197823 		 193.437444 
+	ID[5] - INDEX CHANGE COUNTER - end iteration 46 - CURRENT TIME 8.940865 s: 
+		 -96 		 0 		 2 		 0 		 0 
+	ID[5] - COOPERATIVE FLAG - Content of the cooperative flag iter 46 - CURRENT TIME 8.940865 s: 
+		 1 		 0 		 0 		 0 		 0 
+
++++ID[5] - END ITERATION
+
+
+
++++ID[5] --- INIT ITERATION 47 - CURRENT TIME: 8.943820 s
+	ID[5] - CHECK TO SEND  - compared BKS_S 149.591125 with BKS_M 149.591708 ---> improving 0.000390 % (threshold 0.010000) -- CURRENT TIME 8.944988 s
+ID[5] - Iteration: 47 NFunEvals: 3215 Bestf: 149.590424 CURRENT TIME: 9.033935 s
+	ID[5] - REFSET FVAL - Content of the Refset in the end of iteration 47 - CURRENT TIME 9.042563 s: 
+		 149.590719 		 149.591708 		 149.590424 		 151.739251 		 214.716895 
+	ID[5] - INDEX CHANGE COUNTER - end iteration 47 - CURRENT TIME 9.042563 s: 
+		 0 		 -95 		 0 		 0 		 0 
+	ID[5] - COOPERATIVE FLAG - Content of the cooperative flag iter 47 - CURRENT TIME 9.042563 s: 
+		 0 		 1 		 0 		 0 		 0 
+
++++ID[5] - END ITERATION
+
+
+
++++ID[5] --- INIT ITERATION 48 - CURRENT TIME: 9.046864 s
+	ID[5] - CHECK TO SEND  - compared BKS_S 149.590424 with BKS_M 149.591708 ---> improving 0.000858 % (threshold 0.010000) -- CURRENT TIME 9.049285 s
+ID[5] - Iteration: 48 NFunEvals: 3239 Bestf: 149.590391 CURRENT TIME: 9.126954 s
+	ID[5] - REFSET FVAL - Content of the Refset in the end of iteration 48 - CURRENT TIME 9.133694 s: 
+		 149.590424 		 149.590391 		 149.591691 		 149.644031 		 167.865284 
+	ID[5] - INDEX CHANGE COUNTER - end iteration 48 - CURRENT TIME 9.133694 s: 
+		 1 		 0 		 0 		 0 		 0 
+	ID[5] - COOPERATIVE FLAG - Content of the cooperative flag iter 48 - CURRENT TIME 9.133694 s: 
+		 0 		 0 		 1 		 0 		 0 
+
++++ID[5] - END ITERATION
+
+
+
++++ID[5] --- INIT ITERATION 49 - CURRENT TIME: 9.136684 s
+	ID[5] - CHECK TO SEND  - compared BKS_S 149.590391 with BKS_M 149.591708 ---> improving 0.000881 % (threshold 0.010000) -- CURRENT TIME 9.137095 s
+ID[5] - Iteration: 49 NFunEvals: 3271 Bestf: 149.588832 CURRENT TIME: 9.228021 s
+	ID[5] - REFSET FVAL - Content of the Refset in the end of iteration 49 - CURRENT TIME 9.234069 s: 
+		 149.590391 		 149.590424 		 149.588832 		 149.593522 		 150.912490 
+	ID[5] - INDEX CHANGE COUNTER - end iteration 49 - CURRENT TIME 9.234069 s: 
+		 1 		 2 		 0 		 0 		 0 
+	ID[5] - COOPERATIVE FLAG - Content of the cooperative flag iter 49 - CURRENT TIME 9.234069 s: 
+		 0 		 0 		 1 		 0 		 0 
+
++++ID[5] - END ITERATION
+
+
+
++++ID[5] --- INIT ITERATION 50 - CURRENT TIME: 9.237967 s
+	ID[5] - CHECK TO SEND  - compared BKS_S 149.588832 with BKS_M 149.591708 ---> improving 0.001923 % (threshold 0.010000) -- CURRENT TIME 9.239652 s
+ID[5] - Iteration: 50 NFunEvals: 3293 Bestf: 149.588832 CURRENT TIME: 9.494472 s
+	ID[5] - REFSET FVAL - Content of the Refset in the end of iteration 50 - CURRENT TIME 9.498626 s: 
+		 149.588832 		 149.590391 		 149.590424 		 149.589817 		 149.604092 
+	ID[5] - INDEX CHANGE COUNTER - end iteration 50 - CURRENT TIME 9.498626 s: 
+		 1 		 2 		 3 		 0 		 0 
+	ID[5] - COOPERATIVE FLAG - Content of the cooperative flag iter 50 - CURRENT TIME 9.498626 s: 
+		 1 		 0 		 0 		 0 		 0 
+
++++ID[5] - END ITERATION
+
+
+
++++ID[5] --- INIT ITERATION 51 - CURRENT TIME: 9.504872 s
+	ID[5] - CHECK TO SEND  - compared BKS_S 149.588832 with BKS_M 149.591708 ---> improving 0.001923 % (threshold 0.010000) -- CURRENT TIME 9.506845 s
+ID[5] - Iteration: 51 NFunEvals: 3319 Bestf: 149.588824 CURRENT TIME: 9.544621 s
+	ID[5] - REFSET FVAL - Content of the Refset in the end of iteration 51 - CURRENT TIME 9.552578 s: 
+		 149.588832 		 149.588824 		 149.589034 		 149.590043 		 149.590519 
+	ID[5] - INDEX CHANGE COUNTER - end iteration 51 - CURRENT TIME 9.552578 s: 
+		 2 		 0 		 0 		 0 		 0 
+	ID[5] - COOPERATIVE FLAG - Content of the cooperative flag iter 51 - CURRENT TIME 9.552578 s: 
+		 1 		 0 		 0 		 0 		 0 
+
++++ID[5] - END ITERATION
+
+
+
++++ID[5] --- INIT ITERATION 52 - CURRENT TIME: 9.555751 s
+	ID[5] - CHECK TO SEND  - compared BKS_S 149.588824 with BKS_M 149.591708 ---> improving 0.001928 % (threshold 0.010000) -- CURRENT TIME 9.556370 s
+ID[5] - Iteration: 52 NFunEvals: 3347 Bestf: 149.588824 CURRENT TIME: 9.637559 s
+	ID[5] - REFSET FVAL - Content of the Refset in the end of iteration 52 - CURRENT TIME 9.640077 s: 
+		 149.588824 		 149.588832 		 149.588843 		 149.589178 		 149.589102 
+	ID[5] - INDEX CHANGE COUNTER - end iteration 52 - CURRENT TIME 9.640077 s: 
+		 1 		 3 		 0 		 0 		 0 
+	ID[5] - COOPERATIVE FLAG - Content of the cooperative flag iter 52 - CURRENT TIME 9.640077 s: 
+		 0 		 1 		 0 		 0 		 0 
+
++++ID[5] - END ITERATION
+
+
+
++++ID[5] --- INIT ITERATION 53 - CURRENT TIME: 9.643398 s
+	ID[5] - CHECK TO SEND  - compared BKS_S 149.588824 with BKS_M 149.591708 ---> improving 0.001928 % (threshold 0.010000) -- CURRENT TIME 9.643874 s
