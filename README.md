@@ -1,47 +1,66 @@
-# SaCeSS+PETab
+# SaCeSS_parPE
 
-## An modified version of SaCeSS to work with problems in PETab format. 
+## A modified version of SaCeSS to work with problems in PEtab format using parPE
 
-This is an initial integration between SaCeSS solver and PETab file problems. The next notes refer to how to compile and use it.
+This repository provides an integration between the **SaCeSS** solver and optimization problems defined in the **PEtab format**, using the **parPE** tool:
+```
+https://github.com/ICB-DCM/parPE
+```
+The following notes describe how to compile and use the software.
 
 ## Installation
 
-First, install parPE because it is the place where we extract the cost function implemented in C. You should install the PARPE located in the sacess+parpe repository, because it has modifications required to integrate SaCeSS with PEtabbenchmarks.
-	 	
-Once you have installed it, modify the SaCeSS "Makefile" with the parPE directories. In my case:
-	
-...
-PATHPARPE=/mnt/netapp1/Store_CSIC/home/csic/gim/dro/parPE
-PATHHDF5=/opt/cesga/easybuild-cesga/software/MPI/gcc/6.4.0/openmpi/2.1.1/hdf5/1.10.3
-PATHBOOST=/mnt/netapp1/Optcesga_FT2_RHEL7/easybuild-cesga/software/MPI/gcc/6.4.0/openmpi/2.1.1/boost/1.74.0-python-3.8.1
-PATHIPOPT=/mnt/netapp1/Store_CSIC/home/csic/gim/dro/parPE/ThirdParty/Ipopt-releases-3.13.3/install
-PATHCERES=/mnt/netapp1/Store_CSIC/home/csic/gim/dro/parPE/ThirdParty/ceres-solver-2.0.0/build/install
-...
+First, install **parPE 0.7.0**, as it provides the C implementation of the cost function used by SaCeSS.
 
-In our case, we also need to call the followings software modules previous to call Makefile. Our supercomputer use a module software system to manage the different versions of the programs. Thus, each module sets in the environment vars the path for a specific program. Obviously, this will change depending on the machine/infrastructure that you want to test, and maybe in your case, you need to do this manually (modifying LD_LIBRARY_PATH, PATH, ...)
+After this, apply the patch included in the **patch/** folder. Simply extract **parpe_sacess_overlay.tar.gz** into your parPE installation folder.
 
-$ module load gcc openmpi zlib boost python git  gsl imkl openblas hdf5/1.10.3
+This **patch/** includes the modifications required to integrate SaCeSS with PEtab benchmarks; therefore, its application is essential.
 
-To install SACESS+peTAB the first time:
-    
+Once modified parPE is installed, modify the **SaCeSS_parPE** Makefile to point to the corresponding parPE directories. In our case:
+
+```
+PATHPARPE=/mnt/lustre/scratch/nlsas/home/csic/gim/dro/parPE-0.7.0
+PATHHDF5=/opt/cesga/2020/software/Compiler/gcccore/system/hdf5/1.12.1
+PATHBOOST=/opt/cesga/2020/software/Compiler/gcccore/system/boost/1.83.0/lib64
+PATHIPOPT=/mnt/lustre/scratch/nlsas/home/csic/gim/dro/parPE-0.7.0/ThirdParty/Ipopt-releases-3.13.3/install
+```
+
+You must set all the environmental variables required to install **parPE**. In our case, since we are working on a supercomputer that utilizes environment modules, it is necessary to load the required software modules before calling the **Makefile**.
+
+Our infrastructure uses a module management system to handle different software versions; therefore, each module automatically configures the environment variables (such as PATH and LD_LIBRARY_PATH) for the specific program.
+
+**[IMPORTANT]** This setup will vary depending on the specific machine or infrastructure you are using. If your system does not support modules, you may need to configure these paths manually (e.g., by modifying your .bashrc or exporting variables directly).
+
+```bash
+$ module load gcc/system gcccore/12.3.0 python/3.10.8 openmpi/4.0.5_ft3 boost/1.83.0  cmake/3.23.1 imkl hdf5/1.12.1
+```
+
+After this, to install SaCeSS+parPE the first time:
+
+```bash   
 $ make PARPE=Boehm (the first time it requires time)
-	
-If you check "bin" folder:
-	
-$ bin/paralleltestbed_Boehm (it is the specific executable to run Boehm problem)
-	
-If you want run another benchmarks (i.e. Borghans) you only need to do:
-	
-$ make PARPE=Borghans
-	
-And you obtain another executable in bin folder:
-	
-$ bin/paralleltestbed_Borghans
-	
-We have integrated the following benchmarks (some of them do not work well):
+```
 
-$ make PARPE=Alkan
-$ make PARPE=Bachmann
+If the compilation was successful, verify the **bin/** folder:
+
+```bash
+ls -l ./bin
+$ bin/paralleltestbed_Boehm (it is the specific executable to run Boehm problem)
+```
+	
+If you want to run other benchmarks (e.g., **Borghans**), simply execute:
+```bash
+$ make PARPE=Borghans
+```
+This will generate another executable in the bin/ folder:
+```bash
+$ bin/paralleltestbed_Borghans
+```
+	
+We have integrated the following benchmarks:
+
+```bash
+$ make PARPE=Armistead
 $ make PARPE=Beer
 $ make PARPE=Bertozzi
 $ make PARPE=Blasi
@@ -62,58 +81,51 @@ $ make PARPE=Okuonghae
 $ make PARPE=Oliveira
 $ make PARPE=Perelson
 $ make PARPE=Rahman
+$ make PARPE=Raia
 $ make PARPE=Raimundez
 $ make PARPE=SalazarCavazos
+$ make PARPE=Smith
 $ make PARPE=Schwen
 $ make PARPE=Sneyd
 $ make PARPE=Weber
 $ make PARPE=Zhao
 $ make PARPE=Zheng
-
+```
 
 ## Configuration
 
 Each peTAB benchmark has a configure folder: 
-	
-$ input/Boehm_JProteomeRes2014_SACESS.xml
-	
-For more specific details about the configuration of SaCeSS, check the manual:
-	
-$ doc/manual/DOCUMENTATION_SACESS_SOFTWARE.pdf
 
+```bash
+$ inputs/forward/sacess_dhc/Boehm_sacess_dhc_forward.xml 
+```
+For instance, the file `Boehm_sacess_dhc_forward.xml` specifies the settings to run the **Boehm** model with **SaCeSS** using **DHC** and **forward sensitivities**.
+
+For more specific details regarding **SaCeSS** configuration, please consult the manual:
+
+```bash
+$ doc/manual/DOCUMENTATION_SACESS_SOFTWARE.pdf
+```
 
 ## Run
 
+```bash
 $ mpirun -np 10 bin/paralleltestbed_Boehm inputs/Boehm_JProteomeRes2014_SACESS.xml output/test_Boehm_01
-	
-To run SaCeSS + PEtab without problems, we must have all the environment variables loaded (remember this, especially when working in queue-based systems).  In my case, my script to run SaCeSS is the following:
-
-module load gcc openmpi/4.1.1_ft3 boost gsl hdf5 python jdk
-
-export LD_LIBRARY_PATH=/mnt/netapp1/Store_CSIC/home/csic/gim/dro/parPE/ThirdParty/Ipopt-releases-3.13.3/ThirdParty-HSL/install/lib:$LD_LIBRARY_PATH
-export C_INCLUDE_PATH=/mnt/netapp1/Store_CSIC/home/csic/gim/dro/opt/libffi/include:$C_INCLUDE_PATH
-export LD_LIBRARY_PATH=/mnt/netapp1/Store_CSIC/home/csic/gim/dro/parPE/ThirdParty/Ipopt-releases-3.13.3/install/lib:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=/mnt/netapp1/Store_CSIC/home/csic/gim/dro/parPE/ThirdParty/ceres-solver-2.0.0/build/install/lib64:$LD_LIBRARY_PATH
-export CMAKE_PREFIX_PATH=/mnt/netapp1/Store_CSIC/home/csic/gim/dro/parPE/build:$CMAKE_PREFIX_PATH
-export CMAKE_PREFIX_PATH=/mnt/netapp1/Store_CSIC/home/csic/gim/dro/parPE/ThirdParty/ceres-solver-2.0.0/build/install:$CMAKE_PREFIX_PATH
-export ParPE=/mnt/netapp1/Store_CSIC/home/csic/gim/dro/parPE/build
-export ParPE_INCLUDE_DIRS=/mnt/netapp1/Store_CSIC/home/csic/gim/dro/parPE/include
-export CMAKE_PREFIX_PATH=/mnt/netapp1/Store_CSIC/home/csic/gim/dro/parPE/ThirdParty/Ipopt-releases-3.13.3/install:$CMAKE_PREFIX_PATH
-export PKG_CONFIG_PATH=/mnt/netapp1/Store_CSIC/home/csic/gim/dro/parPE/ThirdParty/Ipopt-releases-3.13.3:$PKG_CONFIG_PATH
-export PKG_CONFIG_PATH=/mnt/netapp1/Store_CSIC/home/csic/gim/dro/parPE/ThirdParty/ceres-solver-2.0.0/build:$PKG_CONFIG_PATH
-export PKG_CONFIG_PATH=/mnt/netapp1/Optcesga_FT2_RHEL7/2020/gentoo/22072020/usr/bin/pkg-config:$PKG_CONFIG_PATH
-export LD_LIBRARY_PATH=/mnt/netapp1/Store_CSIC/home/csic/gim/dro/parPE/ThirdParty/CBLAS/lib:$LD_LIBRARY_PATH
-export C_INCLUDE_PATH=/mnt/netapp1/Store_CSIC/home/csic/gim/dro/parPE/ThirdParty/CBLAS/include:$C_INCLUDE_PATH
-export HDF5_BASE=/opt/cesga/2020/software/Compiler/gcccore/system/hdf5/1.12.1
-export PYTHONPATH=/home/csic/gim/dro/.local/lib/python3.9/site-packages
-export PKG_CONFIG_PATH=/opt/cesga/2020/software/Compiler/gcccore/system/hdf5/1.12.1/lib/pkgconfig:$PKG_CONFIG_PATH
-export PKG_CONFIG_PATH=/mnt/netapp1/Store_CSIC/home/csic/gim/dro/parPE/ThirdParty/Ipopt-releases-3.13.3/ThirdParty-HSL/install/lib/pkgconfig:$PKG_CONFIG_PATH
-export C_INCLUDE_PATH=/home/csic/gim/dro/.local/lib/python3.9/site-packages/amici/include:$C_INCLUDE_PATH
-export LD_LIBRARY_PATH=/mnt/netapp1/Store_CSIC/home/csic/gim/dro/parPE/ThirdParty/spdlog/build:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=/mnt/netapp1/Store_CSIC/home/csic/gim/dro/parPE/ThirdParty/Ipopt-releases-3.13.3/install/lib:$LD_LIBRARY_PATH
-export LD_RUN_PATH=/mnt/netapp1/Store_CSIC/home/csic/gim/dro/parPE/ThirdParty/Ipopt-releases-3.13.3/install/lib:$LD_RUN_PATH
+```
+To run SaCeSS_parPE correctly, all environment variables must be properly loaded (ensure this is handled, particularly when working with queue-based systems). Below is an example of the script used to run SaCeSS:
+```bash
+module load gcc/system gcccore/12.3.0 python/3.10.8 openmpi/4.0.5_ft3 boost/1.83.0  cmake/3.23.1 imkl
+export PARPE_NO_DEBUG=1
+export PARPE_NUM_SIMULATION_TRIALS=1
+export OMP_NUM_THREADS=1
+LD_LIBRARY_PATH=/mnt/lustre/scratch/nlsas/home/csic/gim/dro/parPE-0.7.0/ThirdParty/Ipopt-releases-3.13.3/install/lib:$LD_LIBRARY_PATH
+```
 	
 For more specific details about how SaCeSS works, check the manual:
 
+```bash
 $ doc/manual/DOCUMENTATION_SACESS_SOFTWARE.pdf
+```
+
+To use a *singularity-based container*, navigate to the container/ folder and follow the instructions provided there.
 
