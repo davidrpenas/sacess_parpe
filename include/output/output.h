@@ -1,4 +1,4 @@
-void printbestsolutionfile_(void *, double *, double *, double *, int *);
+void printbestsolutionfile_(void *, double *, double *, double *, int *, int *);
 
 void printdesadaptationmaster_(void *, int *, int *, double *, int *, int *, double *,int *, int *, double *, double *, int *);
 void printcombine_(void *, int *);

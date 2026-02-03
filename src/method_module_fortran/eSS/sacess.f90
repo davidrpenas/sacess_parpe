@@ -425,7 +425,7 @@ CONTAINS
         if (common_vars%idp .EQ. 0) then
                 CALL  printresults(exp1, fbest, nfunevaltotal,results%timetotal, results%totalvtr,results%totaliter)
         end if
-		CALL  printbestsolutionfile(exp1, fbest(1), xbest, results%timetotal, nfunevaltotal)
+        CALL  printbestsolutionfile(exp1, fbest(1), xbest, results%timetotal, nfunevaltotal, 1)
         
         
         ! Free memory

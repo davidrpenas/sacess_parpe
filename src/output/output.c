@@ -212,12 +212,22 @@ void printiterationcesslog_(void *exp1_,  double *best, long *evaluation_local, 
 }
 
 
-void printbestsolutionfile_(void *exp1_, double *best, double *xbest, double *currenttime, int *evals) {
+void printbestsolutionfile_(void *exp1_, double *best, double *xbest, double *currenttime, int *evals, int *end) {
     experiment_total *exp1;
     FILE *p3;
-	int i;
+    int i;
+    double const_t;
+    
 
     exp1 = (experiment_total *) exp1_;
+
+    if (*end == 0) {
+        if (exp1->test.bench.translation == 1) {
+	    const_t = (double) *(exp1->execution.transconst);
+        }
+    }
+    else 
+        const_t = 0.0;
 
     if (exp1[0].test.output == 1) {
 		p3 = fopen( (const char *) exp1[0].test.output_path_bs, "w");
@@ -228,23 +238,22 @@ void printbestsolutionfile_(void *exp1_, double *best, double *xbest, double *cu
 	 
 		for (i=0; i< exp1[0].test.bench.dim; ++i) {
 			if ( i != ( exp1[0].test.bench.dim - 1) ) {
-				fprintf(p3, "%0.15f, ", xbest[i]);
+                                if ( xbest[i] != 0.0 ) 	fprintf(p3, "%0.15f, ", xbest[i]-const_t);
 			}
 			else {
-				fprintf(p3, "%0.15f", xbest[i]);
+				if ( xbest[i] != 0.0 )  fprintf(p3, "%0.15f",   xbest[i]-const_t);
 			}
 		}
 		fprintf(p3, "\n");
 
 		fclose(p3);
 		p3 = NULL;
-    
-	}
+   }
 }			
 
 
-void printsolution_(void *exp1_, double *xbest, double *fbest) {
 
+void printsolution_(void *exp1_, double *xbest, double *fbest) {
 
     experiment_total *exp1;
     output_struct *output;
@@ -470,7 +479,6 @@ void printadaptationslave_(void *exp1_, int *recp, int *send, long *diff_evals, 
     }
 
 }
-
 
 
 void printadaptationmaster_(void *exp1_, int *origin, int *dest, double *balance, int *dim, int *counter, int *accept, int *adap, double *time,

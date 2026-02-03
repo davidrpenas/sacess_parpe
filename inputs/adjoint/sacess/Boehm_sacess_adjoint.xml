@@ -9,7 +9,7 @@
         <local_search> 0 </local_search>
         <stopping_criteria>
                 <maxevaluation> 1e10 </maxevaluation>
-                <maxtime> 10800 </maxtime>
+                <maxtime> 10 </maxtime>
 	        <vtr> -1.0e10 </vtr>
         </stopping_criteria>
 	<amici_sensi> 2 </amici_sensi> <!--forward 1 / adjoints 2 -->

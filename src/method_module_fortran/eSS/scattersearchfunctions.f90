@@ -2260,8 +2260,8 @@ END SUBROUTINE
 !#ifdef MPI2
 !                    CALL printsolution(exp1, xbest, fbest)
 !#endif
-	
-					CALL printbestsolutionfile(exp1, fbest(1), xbest, time, 0)
+
+                CALL printbestsolutionfile(exp1, fbest(1), xbest, time, 0, 0)
 
                     if (opts1%useroptions%inter_save .eq. 1) then  
                         !if (.not. ALLOCATED(results%fbest) ) ALLOCATE(results%fbest(size(fbest)))
