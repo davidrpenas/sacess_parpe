@@ -2,7 +2,10 @@
 
 ## A modified version of SaCeSS to work with problems in PEtab format using parPE
 
-This repository provides an integration between the **SaCeSS** solver and optimization problems defined in the **PEtab format**, using the **parPE** tool. 
+This repository provides an integration between the **SaCeSS** solver and optimization problems defined in the **PEtab format**, using the **parPE** tool:
+```
+https://github.com/ICB-DCM/parPE
+```
 The following notes describe how to compile and use the software.
 
 ## Installation
