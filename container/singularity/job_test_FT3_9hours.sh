@@ -9,4 +9,4 @@ module load singularity
 cpus=$SLURM_NTASKS
 unset $(compgen -v | grep "^SLURM")
 
-singularity exec -B $4:/opt/sacess_petab/output $1/sacess_parpe.sif mpirun -np $cpus --oversubscribe /opt/sacess_petab/bin/paralleltestbed_$2 /opt/sacess_petab/$3 /opt/sacess_petab/output/$5
+singularity exec -B $4:/opt/sacess_parpe/output $1/sacess_parpe.sif mpirun -np $cpus --oversubscribe /opt/sacess_parpe/bin/paralleltestbed_$2 /opt/sacess_parpe/$3 /opt/sacess_parpe/output/$5
