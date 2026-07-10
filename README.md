@@ -127,5 +127,4 @@ For more specific details about how SaCeSS works, check the manual:
 $ doc/manual/DOCUMENTATION_SACESS_SOFTWARE.pdf
 ```
 
-To use a *singularity-based container*, navigate to the container/ folder and follow the instructions provided there.
-
+To run SaCeSS+parPE inside a Singularity/Apptainer container (recommended for HPC environments), see the instructions in the container/singularity folder. It covers how to pull the pre-built Docker image from Docker Hub and submit jobs via SLURM.
