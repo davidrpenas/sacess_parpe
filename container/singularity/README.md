@@ -11,7 +11,17 @@ As an example, we refer to the **FINISTERRAE III (FT3)** supercomputer operated 
 Detailed hardware and system specifications are available at:  
 https://www.cesga.es/en/infrastructures/computing/
 
+## Docker Image
+
+The pre-built image is available on [Docker Hub](https://hub.docker.com/repository/docker/drpenas/sacess-parpe/tags/v1.0.1/sha256-0f242057de4571261530265236db7ebb5301d91cdfbad0c65cd2a69601afea96):
+
+```
+docker pull drpenas/sacess-parpe:v1.0.1
+```
+
 ## Build the Image from the Dockerfile
+
+To use it with Singularity/Apptainer on HPC systems, pull it directly from Docker Hub:
 
 ```
 singularity pull sacess_parpe.sif docker://drpenas/sacess-parpe:v1.0.1
